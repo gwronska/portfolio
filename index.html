@@ -40,10 +40,15 @@
     }
 
     body{
-      background: linear-gradient(180deg, var(--bg) 0%, rgba(0,0,0,0.02) 100%);
+      /* Zmiana: Jednolite tło w Dark Mode, gradient tylko w Light Mode */
+      background: var(--bg);
       color: var(--text);
       min-height:100%;
       transition: background .28s ease, color .28s ease;
+    }
+
+    html:not(.dark) body{
+      background: linear-gradient(180deg, var(--bg) 0%, rgba(0,0,0,0.02) 100%);
     }
 
     a{ color: inherit; text-decoration:none; }
@@ -54,7 +59,12 @@
     /* Header */
     .site-header{
       position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px);
-      background: rgba(14,15,26,0.56); border-bottom:1px solid var(--border);
+      /* Zmiana: Tło headera białe w Light Mode, w Dark Mode gradient */
+      background: rgba(14,15,26,0.56); 
+      border-bottom:1px solid var(--border);
+    }
+    html:not(.dark) .site-header{
+        background: rgba(255, 255, 255, 0.5);
     }
     .header-inner{ display:flex; align-items:center; justify-content:space-between; padding:12px 0; }
     .brand{ font-weight:800; display:flex; align-items:center; gap:.6rem; }
@@ -108,7 +118,19 @@
     .footer-inner{ display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
 
     /* Dialog/modal (native) */
-    dialog.modal{ border: none; border-radius:14px; padding:0; max-width:min(96vw,1100px); background:var(--bg); box-shadow:var(--shadow); color:var(--text); overflow-y:auto; max-height:90vh; }
+    dialog.modal{ 
+      border: none; 
+      border-radius:14px; 
+      padding:0; 
+      max-width:min(96vw,1100px); 
+      background:var(--bg); 
+      box-shadow:var(--shadow); 
+      color:var(--text); 
+      overflow-y:auto; 
+      max-height:90vh;
+      /* Zmiana: Dodanie scrolla w dół */
+      align-items: flex-start;
+    }
     dialog::backdrop{ background: rgba(0,0,0,0.55); }
 
     dialog.modal figure{ margin:0; }
@@ -183,7 +205,6 @@
         </div>
 
         <div class="grid">
-          <!-- 5 project cards (images from React data) -->
           <article class="card">
             <button class="card-cover" type="button" data-modal="project1" aria-haspopup="dialog" aria-controls="project1">
               <img src="https://images.unsplash.com/photo-1649442746245-f51f4b76963f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="YOPE thumbnail">
@@ -297,7 +318,6 @@
     </div>
   </footer>
 
-  <!-- Modals -->
   <dialog id="project1" class="modal" role="dialog" aria-labelledby="project1-title">
     <figure>
       <img src="https://images.unsplash.com/photo-1649442746245-f51f4b76963f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="YOPE full">
@@ -521,4 +541,3 @@
   </script>
 </body>
 </html>
-
