@@ -28,21 +28,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Modale
-  const modalLinks = document.querySelectorAll('[data-modal]');
-  modalLinks.forEach(link => {
-    const modalId = link.dataset.modal;
-    const modal = document.getElementById(modalId);
+const modalLinks = document.querySelectorAll('[data-modal]');
+modalLinks.forEach(link => {
+  const modalId = link.dataset.modal;
+  const modal = document.getElementById(modalId);
 
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      if (modal && typeof modal.showModal === 'function') {
-        modal.showModal();
-        modal.scrollTop = 0;
-      } else {
-        console.warn('Modal not found or showModal not supported:', modalId);
-      }
-    });
+  link.addEventListener('click', () => {
+    if (modal && typeof modal.showModal === 'function') {
+      modal.showModal();
+      modal.scrollTop = 0;
+    }
   });
+});
+
 
   // Close buttons
   document.querySelectorAll('dialog.modal').forEach(dialog => {
