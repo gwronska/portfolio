@@ -4,7 +4,7 @@ themeToggle.addEventListener('click', () => {
   document.body.classList.toggle('dark');
 });
 
-// Mobile menu toggle
+// Mobile menu toggle 
 const navToggle = document.querySelector('.nav-toggle');
 const menu = document.getElementById('menu');
 navToggle.addEventListener('click', () => {
