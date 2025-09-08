@@ -47,7 +47,10 @@
     }
 
     html:not(.dark) body{
-      background: linear-gradient(180deg, var(--bg) 0%, rgba(0,0,0,0.02) 100%);
+        background: var(--bg);
+    }
+    html:not(.dark) .card {
+        background: var(--card);
     }
 
     a{ color: inherit; text-decoration:none; }
@@ -62,7 +65,7 @@
       border-bottom:1px solid var(--border);
     }
     html:not(.dark) .site-header{
-        background: rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.9);
     }
     .header-inner{ display:flex; align-items:center; justify-content:space-between; padding:12px 0; }
     .brand{ font-weight:800; display:flex; align-items:center; gap:.6rem; }
@@ -92,7 +95,7 @@
 
     /* Grid & cards */
     .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:18px; }
-    .card{ grid-column: span 4; background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01)); border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column; }
+    .card{ grid-column: span 4; background: var(--card); border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column; }
     .card-cover{ display:block; border:0; padding:0; background:transparent; cursor:pointer; }
     .card-cover img{ width:100%; aspect-ratio:16/10; object-fit:cover; transition:transform .35s ease; display:block; }
     .card:hover .card-cover img{ transform:scale(1.03); }
@@ -129,14 +132,36 @@
       overflow-y:auto;
       max-height:90vh;
       align-items: flex-start;
+      position: relative;
     }
     dialog::backdrop{ background: rgba(0,0,0,0.55); }
+    dialog.modal figure { margin:0; }
+    dialog.modal img { width:100%; height:auto; display:block; border-top-left-radius:14px; border-top-right-radius:14px; }
+    dialog.modal figcaption { padding:16px; }
 
-    dialog.modal figure{ margin:0; }
-    dialog.modal img{ width:100%; height:auto; display:block; border-top-left-radius:14px; border-top-right-radius:14px; }
-    dialog.modal figcaption{ padding:16px; }
-
-    .close-btn{ margin-top:14px; }
+    .modal-close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: transparent;
+        border: 1px solid var(--border);
+        border-radius: 999px;
+        width: 2.25rem;
+        height: 2.25rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .modal-close-btn:hover {
+        transform: scale(1.1);
+    }
+    .modal-close-btn svg {
+        width: 1.25rem;
+        height: 1.25rem;
+        stroke: var(--muted);
+    }
 
     /* Responsive */
     @media (max-width:960px){
@@ -315,6 +340,9 @@
   </footer>
 
   <dialog id="project1" class="modal" role="dialog" aria-labelledby="project1-title">
+    <button class="modal-close-btn" type="button" aria-label="Close modal">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
     <figure>
       <img src="https://images.unsplash.com/photo-1649442746245-f51f4b76963f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="YOPE full">
       <figcaption>
@@ -329,51 +357,58 @@
           <li>High-fidelity prototyping in Figma</li>
           <li>Accessibility testing and recommendations</li>
         </ul>
-        <button class="btn ghost close-btn" type="button">Close</button>
       </figcaption>
     </figure>
   </dialog>
 
   <dialog id="project2" class="modal" role="dialog" aria-labelledby="project2-title">
+    <button class="modal-close-btn" type="button" aria-label="Close modal">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
     <figure>
       <img src="https://images.unsplash.com/photo-1661877066187-05e28240439f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="GlossoVR full">
       <figcaption>
         <h3 id="project2-title">GlossoVR</h3>
         <p><strong>Project Overview:</strong> GlossoVR is a VR-based language learning platform ...</p>
-        <button class="btn ghost close-btn" type="button">Close</button>
       </figcaption>
     </figure>
   </dialog>
 
   <dialog id="project3" class="modal" role="dialog" aria-labelledby="project3-title">
+    <button class="modal-close-btn" type="button" aria-label="Close modal">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
     <figure>
       <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="WebPOS full">
       <figcaption>
         <h3 id="project3-title">WebPOS Web Application</h3>
         <p><strong>Project Overview:</strong> A web-based POS system for retail ...</p>
-        <button class="btn ghost close-btn" type="button">Close</button>
       </figcaption>
     </figure>
   </dialog>
 
   <dialog id="project4" class="modal" role="dialog" aria-labelledby="project4-title">
+    <button class="modal-close-btn" type="button" aria-label="Close modal">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
     <figure>
       <img src="https://images.unsplash.com/photo-1670875329379-de986110c8ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Comarch IoT full">
       <figcaption>
         <h3 id="project4-title">Comarch IoT MES – Operator Panel</h3>
         <p><strong>Project Overview:</strong> Industrial operator interface ...</p>
-        <button class="btn ghost close-btn" type="button">Close</button>
       </figcaption>
     </figure>
   </dialog>
 
   <dialog id="project5" class="modal" role="dialog" aria-labelledby="project5-title">
+    <button class="modal-close-btn" type="button" aria-label="Close modal">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
     <figure>
       <img src="https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Comarch Mobile full">
       <figcaption>
         <h3 id="project5-title">Comarch Mobile – Sales App Redesign</h3>
         <p><strong>Project Overview:</strong> Redesigned mobile app for sales teams ...</p>
-        <button class="btn ghost close-btn" type="button">Close</button>
       </figcaption>
     </figure>
   </dialog>
@@ -465,7 +500,7 @@
     // Close buttons + click outside + ESC
     document.querySelectorAll('dialog.modal').forEach(dialog => {
       // close btn
-      const closeBtn = dialog.querySelector('.close-btn');
+      const closeBtn = dialog.querySelector('.modal-close-btn');
       if (closeBtn){
         closeBtn.addEventListener('click', () => {
           if (typeof dialog.close === 'function') dialog.close(); else dialog.removeAttribute('open');
