@@ -1,31 +1,37 @@
-/* Rok w stopce */
-document.getElementById('year').textContent = new Date().getFullYear();
-
-/* Prosty toggle motywu (dark tylko wizualnie, ale baza już jest) */
-const toggle = document.getElementById('theme-toggle');
-if (toggle){
-  toggle.addEventListener('click', () => {
-    document.documentElement.classList.toggle('light');
+document.addEventListener('DOMContentLoaded', () => {
+  // Theme toggle
+  const themeBtn = document.getElementById('theme-toggle');
+  themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
   });
-}
 
-/* Mobile menu */
-const btn = document.querySelector('.nav-toggle');
-const menu = document.getElementById('menu');
-if (btn && menu){
-  btn.addEventListener('click', () => {
-    const open = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!open));
-    menu.style.display = open ? 'none' : 'flex';
+  // Mobile nav toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('menu');
+  navToggle.addEventListener('click', () => {
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', !expanded);
+    menu.classList.toggle('open');
   });
-}
 
-/* Modals (native <dialog>) */
-document.querySelectorAll('[data-modal]').forEach(el => {
-  el.addEventListener('click', (e) => {
-    e.preventDefault();
-    const id = el.getAttribute('data-modal');
-    const dlg = document.getElementById(id);
-    if (dlg){ dlg.showModal(); }
+  // Project modals
+  const modalLinks = document.querySelectorAll('[data-modal]');
+  modalLinks.forEach(link => {
+    const modalId = link.dataset.modal;
+    const modal = document.getElementById(modalId);
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      if (modal) modal.showModal();
+    });
   });
+
+  // Close modals via button inside <form method="dialog">
+  const closeButtons = document.querySelectorAll('.modal form button');
+  closeButtons.forEach(btn => btn.addEventListener('click', () => {
+    btn.closest('dialog').close();
+  }));
+
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
 });
+
