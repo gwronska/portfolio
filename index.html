@@ -40,7 +40,6 @@
     }
 
     body{
-      /* Zmiana: Jednolite tło w Dark Mode, gradient tylko w Light Mode */
       background: var(--bg);
       color: var(--text);
       min-height:100%;
@@ -59,8 +58,7 @@
     /* Header */
     .site-header{
       position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px);
-      /* Zmiana: Tło headera białe w Light Mode, w Dark Mode gradient */
-      background: rgba(14,15,26,0.56); 
+      background: rgba(14,15,26,0.56);
       border-bottom:1px solid var(--border);
     }
     html:not(.dark) .site-header{
@@ -107,28 +105,29 @@
     .bullets{ list-style:none; padding:0; margin:1rem 0; display:grid; gap:.4rem; }
     .bullets li span{ margin-right:.5rem; color:var(--brand-2); }
 
-    /* Contact form */
-    .contact-form{ display:grid; gap:12px; max-width:560px; }
-    .field{ display:grid; gap:6px; }
-    input, textarea{ background:var(--bg-soft); color:var(--text); border:1px solid var(--border); border-radius:10px; padding:.8rem 1rem; outline-color:var(--brand-2); }
-    input:focus, textarea:focus{ box-shadow: 0 0 0 4px rgba(14,165,233,0.08); }
+    /* Kontakt */
+    .contact-icons {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        font-size: 1.5rem;
+    }
 
     /* Footer */
     .site-footer{ border-top:1px solid var(--border); padding:20px 0; color:var(--muted); }
     .footer-inner{ display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
 
     /* Dialog/modal (native) */
-    dialog.modal{ 
-      border: none; 
-      border-radius:14px; 
-      padding:0; 
-      max-width:min(96vw,1100px); 
-      background:var(--bg); 
-      box-shadow:var(--shadow); 
-      color:var(--text); 
-      overflow-y:auto; 
+    dialog.modal{
+      border: none;
+      border-radius:14px;
+      padding:0;
+      max-width:min(96vw,1100px);
+      background:var(--bg);
+      box-shadow:var(--shadow);
+      color:var(--text);
+      overflow-y:auto;
       max-height:90vh;
-      /* Zmiana: Dodanie scrolla w dół */
       align-items: flex-start;
     }
     dialog::backdrop{ background: rgba(0,0,0,0.55); }
@@ -151,6 +150,10 @@
       .menu{ display:none; }
       .nav-toggle{ display:inline-flex; background:transparent; border:1px solid var(--border); padding:.45rem .7rem; border-radius:.6rem; cursor:pointer; }
       .menu.open{ display:flex; flex-direction:column; gap:.75rem; padding:.75rem; background:var(--bg); position:absolute; right:1rem; top:64px; border-radius:8px; border:1px solid var(--border); }
+      .contact-icons {
+          flex-direction: column;
+          gap: 1rem;
+      }
     }
     @media (max-width:420px){
       .grid{ grid-template-columns:1fr; }
@@ -284,25 +287,18 @@
     <section id="contact" class="section contact">
       <div class="container">
         <div class="section-head">
-          <h2>Contact</h2>
-          <p class="muted">Best via email or LinkedIn. Form powered by external service (e.g., Formspree).</p>
+          <h2>Contact Me</h2>
+          <p class="muted">Let's connect!</p>
         </div>
 
-        <form id="contact-form" class="contact-form" action="https://formspree.io/f/your-id" method="POST">
-          <div class="field">
-            <label for="name">Name</label>
-            <input id="name" name="name" type="text" required>
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required>
-          </div>
-          <div class="field">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-          <button class="btn primary" type="submit">Send</button>
-        </form>
+        <div class="contact-icons">
+          <a href="mailto:gabriela.m.wronska@gmail.com" target="_blank" rel="noopener" aria-label="Email me">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/gabriela-wronska/" target="_blank" rel="noopener" aria-label="Visit my LinkedIn profile">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
       </div>
     </section>
   </main>
@@ -494,27 +490,6 @@
         const pb = document.querySelector('.polybackdrop'); if (pb) pb.remove();
       }
     });
-
-    // Contact form (simple fetch to Formspree)
-    const form = document.getElementById('contact-form');
-    if (form){
-      form.addEventListener('submit', async (ev) => {
-        ev.preventDefault();
-        const data = new FormData(form);
-        try {
-          const res = await fetch(form.action, { method:'POST', body:data, headers:{ Accept:'application/json' }});
-          if (res.ok) {
-            alert('Thank you! Your message has been sent.');
-            form.reset();
-          } else {
-            alert('Oops! There was a problem sending the message.');
-          }
-        } catch (err) {
-          console.error('form error', err);
-          alert('Network error while sending message.');
-        }
-      });
-    }
 
     // very small entrance fade-up for sections (IntersectionObserver)
     (function(){
