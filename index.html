@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en" class="dark">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gabriela — Portfolio</title>
   <meta name="robots" content="noindex, nofollow">
   <meta property="og:title" content="Portfolio — Gabriela">
-  <meta property="og: description" content="My UX/UI and front-end projects.">
+  <meta property="og:description" content="My UX/UI and front-end projects.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/project-1.svg">
   <link rel="icon" href="assets/favicon.ico" sizes="any">
@@ -14,20 +14,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header -->
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="#"><span class="dot"></span>Gabriela</a>
+      <a class="brand" href="#"><span class="dot" aria-hidden="true"></span>Gabriela</a>
+
       <nav class="nav" aria-label="Main">
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
-        <ul id="menu" class="menu">
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#about">About Me</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><button id="theme-toggle" type="button" class="theme-toggle" aria-label="Toggle theme">🌞 Light mode</button></li>
+
+        <ul id="menu" class="menu" role="menubar">
+          <li role="none"><a role="menuitem" href="#projects">Projects</a></li>
+          <li role="none"><a role="menuitem" href="#about">About Me</a></li>
+          <li role="none"><a role="menuitem" href="#contact">Contact</a></li>
+          <li role="none">
+            <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="true" aria-label="Toggle theme">🌞 Light mode</button>
+          </li>
         </ul>
       </nav>
     </div>
@@ -46,7 +52,7 @@
           </div>
         </div>
         <div class="hero-media">
-          <img src="assets/avatar.svg" alt="Gabriela avatar" loading="eager" width="400" height="400">
+          <img src="https://images.unsplash.com/photo-1595745688820-1a8bca9dd00f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Gabriela avatar" loading="eager" width="400" height="400">
         </div>
       </div>
     </section>
@@ -58,11 +64,12 @@
           <h2>Selected Projects</h2>
           <p class="muted">Easily editable section — add new cards with your PNGs.</p>
         </div>
+
         <div class="grid">
           <!-- Project 1 -->
           <article class="card">
-            <button class="card-cover" type="button" data-modal="project1">
-              <img src="assets/project-1.svg" alt="YOPE Website Redesign thumbnail">
+            <button class="card-cover" type="button" data-modal="project1" aria-haspopup="dialog" aria-controls="project1">
+              <img src="https://images.unsplash.com/photo-1649442746245-f51f4b76963f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="YOPE Website Redesign thumbnail">
             </button>
             <div class="card-body">
               <h3>YOPE Website Redesign</h3>
@@ -74,8 +81,8 @@
 
           <!-- Project 2 -->
           <article class="card">
-            <button class="card-cover" type="button" data-modal="project2">
-              <img src="assets/project-2.svg" alt="GlossoVR thumbnail">
+            <button class="card-cover" type="button" data-modal="project2" aria-haspopup="dialog" aria-controls="project2">
+              <img src="https://images.unsplash.com/photo-1661877066187-05e28240439f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="GlossoVR thumbnail">
             </button>
             <div class="card-body">
               <h3>GlossoVR</h3>
@@ -87,8 +94,8 @@
 
           <!-- Project 3 -->
           <article class="card">
-            <button class="card-cover" type="button" data-modal="project3">
-              <img src="assets/project-3.svg" alt="WebPOS Web Application thumbnail">
+            <button class="card-cover" type="button" data-modal="project3" aria-haspopup="dialog" aria-controls="project3">
+              <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="WebPOS Web Application thumbnail">
             </button>
             <div class="card-body">
               <h3>WebPOS Web Application</h3>
@@ -100,8 +107,8 @@
 
           <!-- Project 4 -->
           <article class="card">
-            <button class="card-cover" type="button" data-modal="project4">
-              <img src="assets/project-4.svg" alt="Comarch IoT MES thumbnail">
+            <button class="card-cover" type="button" data-modal="project4" aria-haspopup="dialog" aria-controls="project4">
+              <img src="https://images.unsplash.com/photo-1670875329379-de986110c8ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Comarch IoT MES thumbnail">
             </button>
             <div class="card-body">
               <h3>Comarch IoT MES – Operator Panel</h3>
@@ -113,8 +120,8 @@
 
           <!-- Project 5 -->
           <article class="card">
-            <button class="card-cover" type="button" data-modal="project5">
-              <img src="assets/project-5.svg" alt="Comarch Mobile Sales App thumbnail">
+            <button class="card-cover" type="button" data-modal="project5" aria-haspopup="dialog" aria-controls="project5">
+              <img src="https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Comarch Mobile Sales App thumbnail">
             </button>
             <div class="card-body">
               <h3>Comarch Mobile – Sales App Redesign</h3>
@@ -127,7 +134,7 @@
       </div>
     </section>
 
-    <!-- About Me -->
+    <!-- About -->
     <section id="about" class="section about">
       <div class="container about-inner">
         <div>
@@ -155,7 +162,8 @@
           <h2>Contact</h2>
           <p class="muted">Best via email or LinkedIn. Form powered by external service (e.g., Formspree).</p>
         </div>
-        <form class="contact-form" action="https://formspree.io/f/your-id" method="POST">
+
+        <form id="contact-form" class="contact-form" action="https://formspree.io/f/your-id" method="POST">
           <div class="field">
             <label for="name">Name</label>
             <input id="name" name="name" type="text" required>
@@ -186,12 +194,12 @@
     </div>
   </footer>
 
-  <!-- Project Modals -->
-  <dialog id="project1" class="modal">
+  <!-- Project Modals (dialog) -->
+  <dialog id="project1" class="modal" role="dialog" aria-labelledby="project1-title">
     <figure>
-      <img src="assets/project-1.svg" alt="YOPE Website Redesign full">
+      <img src="https://images.unsplash.com/photo-1649442746245-f51f4b76963f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="YOPE Website Redesign full">
       <figcaption>
-        <h3>YOPE Website Redesign</h3>
+        <h3 id="project1-title">YOPE Website Redesign</h3>
         <p><strong>Project Overview:</strong> YOPE is a Polish natural cosmetics brand that focuses on eco-friendly and low-waste products. I redesigned their website for desktop and mobile, aiming to simplify the interface, reduce clutter, and make the site more accessible for all users.</p>
         <p><strong>My Role:</strong> Sole UX/UI designer responsible for heuristic analysis, accessibility evaluation, wireframing, and high-fidelity prototyping.</p>
         <p><strong>Process:</strong></p>
@@ -207,12 +215,11 @@
     </figure>
   </dialog>
 
-  <!-- Project 2 -->
-  <dialog id="project2" class="modal">
+  <dialog id="project2" class="modal" role="dialog" aria-labelledby="project2-title">
     <figure>
-      <img src="assets/project-2.svg" alt="GlossoVR full">
+      <img src="https://images.unsplash.com/photo-1661877066187-05e28240439f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="GlossoVR full">
       <figcaption>
-        <h3>GlossoVR</h3>
+        <h3 id="project2-title">GlossoVR</h3>
         <p><strong>Project Overview:</strong> GlossoVR is a VR-based language learning platform. I conducted user research and designed interfaces to help learners track progress and visualize vocabulary in immersive 3D environments.</p>
         <p><strong>My Role:</strong> UX researcher and designer; prototyping in VR.</p>
         <p><strong>Process:</strong></p>
@@ -226,12 +233,11 @@
     </figure>
   </dialog>
 
-  <!-- Project 3 -->
-  <dialog id="project3" class="modal">
+  <dialog id="project3" class="modal" role="dialog" aria-labelledby="project3-title">
     <figure>
-      <img src="assets/project-3.svg" alt="WebPOS Web Application full">
+      <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="WebPOS Web Application full">
       <figcaption>
-        <h3>WebPOS Web Application</h3>
+        <h3 id="project3-title">WebPOS Web Application</h3>
         <p><strong>Project Overview:</strong> A web-based POS system for retail. Focused on usability, efficient workflows, and intuitive interfaces for cashiers and managers.</p>
         <p><strong>My Role:</strong> UX/UI designer; created wireframes, prototypes, and tested workflows.</p>
         <p><strong>Process:</strong></p>
@@ -245,12 +251,11 @@
     </figure>
   </dialog>
 
-  <!-- Project 4 -->
-  <dialog id="project4" class="modal">
+  <dialog id="project4" class="modal" role="dialog" aria-labelledby="project4-title">
     <figure>
-      <img src="assets/project-4.svg" alt="Comarch IoT MES full">
+      <img src="https://images.unsplash.com/photo-1670875329379-de986110c8ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Comarch IoT MES full">
       <figcaption>
-        <h3>Comarch IoT MES – Operator Panel</h3>
+        <h3 id="project4-title">Comarch IoT MES – Operator Panel</h3>
         <p><strong>Project Overview:</strong> Industrial operator interface for MES. Designed to optimize production workflows and display real-time sensor data effectively.</p>
         <p><strong>My Role:</strong> UX/UI designer, wireframing, prototyping, and testing.</p>
         <p><strong>Process:</strong></p>
@@ -264,12 +269,11 @@
     </figure>
   </dialog>
 
-  <!-- Project 5 -->
-  <dialog id="project5" class="modal">
+  <dialog id="project5" class="modal" role="dialog" aria-labelledby="project5-title">
     <figure>
-      <img src="assets/project-5.svg" alt="Comarch Mobile Sales App full">
+      <img src="https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Comarch Mobile Sales App full">
       <figcaption>
-        <h3>Comarch Mobile – Sales App Redesign</h3>
+        <h3 id="project5-title">Comarch Mobile – Sales App Redesign</h3>
         <p><strong>Project Overview:</strong> Redesigned mobile app for sales teams. Focused on improving usability in the field, reducing steps for common tasks, and providing clear visual feedback.</p>
         <p><strong>My Role:</strong> UX/UI designer, wireframes, prototypes, and testing with sales staff.</p>
         <p><strong>Process:</strong></p>
@@ -283,7 +287,8 @@
     </figure>
   </dialog>
 
-  <script src="scripts.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
+
 
