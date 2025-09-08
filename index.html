@@ -3,44 +3,162 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gabriela — Portfolio</title>
-  <meta name="robots" content="noindex, nofollow">
-  <meta property="og:title" content="Portfolio — Gabriela">
-  <meta property="og:description" content="My UX/UI and front-end projects.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/project-1.svg">
-  <link rel="icon" href="assets/favicon.ico" sizes="any">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <title>Gabriela — Portfolio (test)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ===== Inline CSS (complete) ===== */
+
+    /* Reset */
+    *, *::before, *::after { box-sizing: border-box; }
+    html,body { margin:0; padding:0; height:100%; }
+    body { font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; line-height:1.6; }
+
+    /* Theme vars: light default; dark overrides on html.dark */
+    :root{
+      --bg: #ffffff;
+      --bg-soft:#f6f7fb;
+      --text:#0b0c10;
+      --muted:#6b7280;
+      --brand:#3b82f6;
+      --brand-2:#0ea5e9;
+      --card:#ffffff;
+      --border: rgba(2,6,23,0.06);
+      --shadow: 0 8px 24px rgba(2,6,23,0.06);
+    }
+    html.dark{
+      --bg:#0b0c10;
+      --bg-soft:#111218;
+      --text:#f7f7fb;
+      --muted:#a8a9b3;
+      --brand:#3b82f6;
+      --brand-2:#0ea5e9;
+      --card:#151723;
+      --border:#242638;
+      --shadow: 0 12px 36px rgba(0,0,0,0.35);
+    }
+
+    body{
+      background: linear-gradient(180deg, var(--bg) 0%, rgba(0,0,0,0.02) 100%);
+      color: var(--text);
+      min-height:100%;
+      transition: background .28s ease, color .28s ease;
+    }
+
+    a{ color: inherit; text-decoration:none; }
+    img{ display:block; max-width:100%; height:auto; }
+
+    .container{ width:min(1100px, 92%); margin:0 auto; }
+
+    /* Header */
+    .site-header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px);
+      background: rgba(14,15,26,0.56); border-bottom:1px solid var(--border);
+    }
+    .header-inner{ display:flex; align-items:center; justify-content:space-between; padding:12px 0; }
+    .brand{ font-weight:800; display:flex; align-items:center; gap:.6rem; }
+    .brand .dot{ width:.7rem; height:.7rem; border-radius:999px; background:linear-gradient(45deg,var(--brand),var(--brand-2)); display:inline-block; }
+    .menu{ display:flex; gap:1rem; align-items:center; list-style:none; margin:0; padding:0; }
+    .nav-toggle{ display:none; }
+    .theme-toggle{ background:transparent; border:1px solid var(--border); padding:.45rem .7rem; border-radius:.6rem; cursor:pointer; color:var(--text); }
+
+    /* Hero */
+    .hero{ padding:56px 0 32px; border-bottom:1px solid var(--border); }
+    .hero-inner{ display:grid; grid-template-columns:1.25fr .9fr; gap:2.2rem; align-items:center; }
+    .hero h1{ font-size:clamp(28px,4vw,44px); margin:0 0 .6rem; line-height:1.12; }
+    .hero p{ color:var(--muted); margin:.5rem 0 1.25rem; }
+    .accent{ background: linear-gradient(45deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .cta-row{ display:flex; gap:.8rem; flex-wrap:wrap; }
+
+    /* Buttons */
+    .btn{ display:inline-flex; align-items:center; justify-content:center; padding:.7rem 1.1rem; font-weight:600; border-radius:1rem; border:1px solid var(--border); cursor:pointer; transition:transform .18s ease, box-shadow .18s ease; background:transparent; color:var(--text); }
+    .btn.primary{ background: linear-gradient(45deg,var(--brand),var(--brand-2)); color:#fff; border:none; }
+    .btn.ghost{ background:transparent; color:var(--text); border:1px solid var(--border); }
+    .btn:hover{ transform:translateY(-3px); }
+
+    /* Sections */
+    .section{ padding:56px 0; }
+    .section-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:1rem; margin-bottom:18px; }
+    .muted{ color:var(--muted); }
+
+    /* Grid & cards */
+    .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:18px; }
+    .card{ grid-column: span 4; background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01)); border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column; }
+    .card-cover{ display:block; border:0; padding:0; background:transparent; cursor:pointer; }
+    .card-cover img{ width:100%; aspect-ratio:16/10; object-fit:cover; transition:transform .35s ease; display:block; }
+    .card:hover .card-cover img{ transform:scale(1.03); }
+    .card-body{ padding:14px; }
+    .tags{ display:flex; gap:.5rem; flex-wrap:wrap; margin:.4rem 0 .8rem; }
+    .tags span{ font-size:12px; padding:.2rem .5rem; border-radius:999px; background:transparent; border:1px solid var(--border); color:var(--muted); }
+
+    /* About */
+    .about-inner{ display:grid; grid-template-columns:1fr; gap:1rem; }
+    .bullets{ list-style:none; padding:0; margin:1rem 0; display:grid; gap:.4rem; }
+    .bullets li span{ margin-right:.5rem; color:var(--brand-2); }
+
+    /* Contact form */
+    .contact-form{ display:grid; gap:12px; max-width:560px; }
+    .field{ display:grid; gap:6px; }
+    input, textarea{ background:var(--bg-soft); color:var(--text); border:1px solid var(--border); border-radius:10px; padding:.8rem 1rem; outline-color:var(--brand-2); }
+    input:focus, textarea:focus{ box-shadow: 0 0 0 4px rgba(14,165,233,0.08); }
+
+    /* Footer */
+    .site-footer{ border-top:1px solid var(--border); padding:20px 0; color:var(--muted); }
+    .footer-inner{ display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
+
+    /* Dialog/modal (native) */
+    dialog.modal{ border: none; border-radius:14px; padding:0; max-width:min(96vw,1100px); background:var(--bg); box-shadow:var(--shadow); color:var(--text); overflow-y:auto; max-height:90vh; }
+    dialog::backdrop{ background: rgba(0,0,0,0.55); }
+
+    dialog.modal figure{ margin:0; }
+    dialog.modal img{ width:100%; height:auto; display:block; border-top-left-radius:14px; border-top-right-radius:14px; }
+    dialog.modal figcaption{ padding:16px; }
+
+    .close-btn{ margin-top:14px; }
+
+    /* Responsive */
+    @media (max-width:960px){
+      .hero-inner{ grid-template-columns:1fr; text-align:left; }
+      .grid{ grid-template-columns: repeat(6, 1fr); gap:14px; }
+      .card{ grid-column: span 3; }
+    }
+    @media (max-width:560px){
+      .grid{ grid-template-columns: repeat(2,1fr); }
+      .card{ grid-column: span 2; }
+      .menu{ display:none; }
+      .nav-toggle{ display:inline-flex; background:transparent; border:1px solid var(--border); padding:.45rem .7rem; border-radius:.6rem; cursor:pointer; }
+      .menu.open{ display:flex; flex-direction:column; gap:.75rem; padding:.75rem; background:var(--bg); position:absolute; right:1rem; top:64px; border-radius:8px; border:1px solid var(--border); }
+    }
+    @media (max-width:420px){
+      .grid{ grid-template-columns:1fr; }
+      .card{ grid-column: span 1; }
+    }
+
+    /* small helper */
+    .sr-only{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+  </style>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="sr-only" href="#main">Skip to content</a>
 
-  <!-- Header -->
-  <header class="site-header">
+  <header class="site-header" role="banner">
     <div class="container header-inner">
       <a class="brand" href="#"><span class="dot" aria-hidden="true"></span>Gabriela</a>
 
       <nav class="nav" aria-label="Main">
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
-
         <ul id="menu" class="menu" role="menubar">
-          <li role="none"><a role="menuitem" href="#projects">Projects</a></li>
-          <li role="none"><a role="menuitem" href="#about">About Me</a></li>
-          <li role="none"><a role="menuitem" href="#contact">Contact</a></li>
-          <li role="none">
-            <button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="true" aria-label="Toggle theme">🌞 Light mode</button>
-          </li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="true">🌞 Light mode</button></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main id="main">
-    <!-- Hero -->
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-text">
@@ -57,7 +175,6 @@
       </div>
     </section>
 
-    <!-- Projects -->
     <section id="projects" class="section projects">
       <div class="container">
         <div class="section-head">
@@ -66,20 +183,18 @@
         </div>
 
         <div class="grid">
-          <!-- Project 1 -->
+          <!-- 5 project cards (images from React data) -->
           <article class="card">
             <button class="card-cover" type="button" data-modal="project1" aria-haspopup="dialog" aria-controls="project1">
-              <img src="https://images.unsplash.com/photo-1649442746245-f51f4b76963f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="YOPE Website Redesign thumbnail">
+              <img src="https://images.unsplash.com/photo-1649442746245-f51f4b76963f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="YOPE thumbnail">
             </button>
             <div class="card-body">
               <h3>YOPE Website Redesign</h3>
               <p class="muted">UX/UI design → prototype → accessibility</p>
               <div class="tags"><span>UX</span><span>UI</span><span>Prototype</span></div>
-              <div class="card-links"></div>
             </div>
           </article>
 
-          <!-- Project 2 -->
           <article class="card">
             <button class="card-cover" type="button" data-modal="project2" aria-haspopup="dialog" aria-controls="project2">
               <img src="https://images.unsplash.com/photo-1661877066187-05e28240439f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="GlossoVR thumbnail">
@@ -88,60 +203,50 @@
               <h3>GlossoVR</h3>
               <p class="muted">VR language learning → user research → visualization</p>
               <div class="tags"><span>VR</span><span>UX</span><span>Research</span></div>
-              <div class="card-links"></div>
             </div>
           </article>
 
-          <!-- Project 3 -->
           <article class="card">
             <button class="card-cover" type="button" data-modal="project3" aria-haspopup="dialog" aria-controls="project3">
-              <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="WebPOS Web Application thumbnail">
+              <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="WebPOS thumbnail">
             </button>
             <div class="card-body">
               <h3>WebPOS Web Application</h3>
               <p class="muted">Retail POS → interface → workflows → prototypes</p>
               <div class="tags"><span>UX</span><span>UI</span><span>Prototyping</span></div>
-              <div class="card-links"></div>
             </div>
           </article>
 
-          <!-- Project 4 -->
           <article class="card">
             <button class="card-cover" type="button" data-modal="project4" aria-haspopup="dialog" aria-controls="project4">
-              <img src="https://images.unsplash.com/photo-1670875329379-de986110c8ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Comarch IoT MES thumbnail">
+              <img src="https://images.unsplash.com/photo-1670875329379-de986110c8ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Comarch IoT thumbnail">
             </button>
             <div class="card-body">
               <h3>Comarch IoT MES – Operator Panel</h3>
               <p class="muted">Industrial interface → workflow → prototyping</p>
               <div class="tags"><span>UX</span><span>UI</span><span>Wireframing</span></div>
-              <div class="card-links"></div>
             </div>
           </article>
 
-          <!-- Project 5 -->
           <article class="card">
             <button class="card-cover" type="button" data-modal="project5" aria-haspopup="dialog" aria-controls="project5">
-              <img src="https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Comarch Mobile Sales App thumbnail">
+              <img src="https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Comarch Mobile thumbnail">
             </button>
             <div class="card-body">
               <h3>Comarch Mobile – Sales App Redesign</h3>
               <p class="muted">Mobile UX → field workflows → interactive prototypes</p>
               <div class="tags"><span>UX</span><span>UI</span><span>Mobile</span></div>
-              <div class="card-links"></div>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- About -->
     <section id="about" class="section about">
       <div class="container about-inner">
         <div>
           <h2>About Me</h2>
-          <p>
-            Passionate about creativity in all its forms, I find joy in expressing myself through various art mediums – from painting and sketching to jewelry making, photography, and sculpting. I also enjoy exploring digital art and experimenting with 3D models. Alongside my artistic pursuits, I'm dedicated to advancing my education, recently achieving a milestone with a paper acceptance at the IEEE VR conference. Beyond that, I indulge in the culinary arts, finding solace in cooking and baking. I am also a proud cat enthusiast.
-          </p>
+          <p>Passionate about creativity in all its forms, I find joy in expressing myself through various art mediums – from painting and sketching to jewelry making, photography, and sculpting. I also enjoy exploring digital art and experimenting with 3D models. Alongside my artistic pursuits, I'm dedicated to advancing my education, recently achieving a milestone with a paper acceptance at the IEEE VR conference. Beyond that, I indulge in the culinary arts, finding solace in cooking and baking. I am also a proud cat enthusiast.</p>
           <ul class="bullets">
             <li><span>✓</span> End-to-end design: discovery → delivery</li>
             <li><span>✓</span> Tools: Figma, Webflow, GitHub</li>
@@ -155,7 +260,6 @@
       </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact" class="section contact">
       <div class="container">
         <div class="section-head">
@@ -182,7 +286,6 @@
     </section>
   </main>
 
-  <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <small>© <span id="year"></span> Gabriela. All rights reserved.</small>
@@ -194,14 +297,14 @@
     </div>
   </footer>
 
-  <!-- Project Modals (dialog) -->
+  <!-- Modals -->
   <dialog id="project1" class="modal" role="dialog" aria-labelledby="project1-title">
     <figure>
-      <img src="https://images.unsplash.com/photo-1649442746245-f51f4b76963f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="YOPE Website Redesign full">
+      <img src="https://images.unsplash.com/photo-1649442746245-f51f4b76963f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="YOPE full">
       <figcaption>
         <h3 id="project1-title">YOPE Website Redesign</h3>
-        <p><strong>Project Overview:</strong> YOPE is a Polish natural cosmetics brand that focuses on eco-friendly and low-waste products. I redesigned their website for desktop and mobile, aiming to simplify the interface, reduce clutter, and make the site more accessible for all users.</p>
-        <p><strong>My Role:</strong> Sole UX/UI designer responsible for heuristic analysis, accessibility evaluation, wireframing, and high-fidelity prototyping.</p>
+        <p><strong>Project Overview:</strong> YOPE is a Polish natural cosmetics brand ...</p>
+        <p><strong>My Role:</strong> Sole UX/UI designer ...</p>
         <p><strong>Process:</strong></p>
         <ul>
           <li>Heuristic analysis to identify usability issues</li>
@@ -220,14 +323,7 @@
       <img src="https://images.unsplash.com/photo-1661877066187-05e28240439f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="GlossoVR full">
       <figcaption>
         <h3 id="project2-title">GlossoVR</h3>
-        <p><strong>Project Overview:</strong> GlossoVR is a VR-based language learning platform. I conducted user research and designed interfaces to help learners track progress and visualize vocabulary in immersive 3D environments.</p>
-        <p><strong>My Role:</strong> UX researcher and designer; prototyping in VR.</p>
-        <p><strong>Process:</strong></p>
-        <ul>
-          <li>User interviews and observations</li>
-          <li>Wireframes and VR interface design</li>
-          <li>Interactive VR prototype testing</li>
-        </ul>
+        <p><strong>Project Overview:</strong> GlossoVR is a VR-based language learning platform ...</p>
         <button class="btn ghost close-btn" type="button">Close</button>
       </figcaption>
     </figure>
@@ -235,17 +331,10 @@
 
   <dialog id="project3" class="modal" role="dialog" aria-labelledby="project3-title">
     <figure>
-      <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="WebPOS Web Application full">
+      <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="WebPOS full">
       <figcaption>
         <h3 id="project3-title">WebPOS Web Application</h3>
-        <p><strong>Project Overview:</strong> A web-based POS system for retail. Focused on usability, efficient workflows, and intuitive interfaces for cashiers and managers.</p>
-        <p><strong>My Role:</strong> UX/UI designer; created wireframes, prototypes, and tested workflows.</p>
-        <p><strong>Process:</strong></p>
-        <ul>
-          <li>Workflow analysis</li>
-          <li>Wireframing and prototyping</li>
-          <li>User testing with staff</li>
-        </ul>
+        <p><strong>Project Overview:</strong> A web-based POS system for retail ...</p>
         <button class="btn ghost close-btn" type="button">Close</button>
       </figcaption>
     </figure>
@@ -253,17 +342,10 @@
 
   <dialog id="project4" class="modal" role="dialog" aria-labelledby="project4-title">
     <figure>
-      <img src="https://images.unsplash.com/photo-1670875329379-de986110c8ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Comarch IoT MES full">
+      <img src="https://images.unsplash.com/photo-1670875329379-de986110c8ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Comarch IoT full">
       <figcaption>
         <h3 id="project4-title">Comarch IoT MES – Operator Panel</h3>
-        <p><strong>Project Overview:</strong> Industrial operator interface for MES. Designed to optimize production workflows and display real-time sensor data effectively.</p>
-        <p><strong>My Role:</strong> UX/UI designer, wireframing, prototyping, and testing.</p>
-        <p><strong>Process:</strong></p>
-        <ul>
-          <li>Analyzed operator needs</li>
-          <li>Created wireframes for dashboards</li>
-          <li>High-fidelity prototypes and usability tests</li>
-        </ul>
+        <p><strong>Project Overview:</strong> Industrial operator interface ...</p>
         <button class="btn ghost close-btn" type="button">Close</button>
       </figcaption>
     </figure>
@@ -271,24 +353,172 @@
 
   <dialog id="project5" class="modal" role="dialog" aria-labelledby="project5-title">
     <figure>
-      <img src="https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Comarch Mobile Sales App full">
+      <img src="https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Comarch Mobile full">
       <figcaption>
         <h3 id="project5-title">Comarch Mobile – Sales App Redesign</h3>
-        <p><strong>Project Overview:</strong> Redesigned mobile app for sales teams. Focused on improving usability in the field, reducing steps for common tasks, and providing clear visual feedback.</p>
-        <p><strong>My Role:</strong> UX/UI designer, wireframes, prototypes, and testing with sales staff.</p>
-        <p><strong>Process:</strong></p>
-        <ul>
-          <li>Analyzed field workflows</li>
-          <li>Mobile wireframes and prototypes</li>
-          <li>Tested with users on mobile devices</li>
-        </ul>
+        <p><strong>Project Overview:</strong> Redesigned mobile app for sales teams ...</p>
         <button class="btn ghost close-btn" type="button">Close</button>
       </figcaption>
     </figure>
   </dialog>
 
-  <script src="script.js"></script>
+  <script>
+    // ===== Inline JS (debug-friendly) =====
+    console.log('inline script loaded');
+
+    // Footer year
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // Theme toggle (localStorage)
+    const themeBtn = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+
+    function setTheme(dark){
+      if (dark){
+        root.classList.add('dark');
+        if (themeBtn) { themeBtn.textContent = '🌞 Light mode'; themeBtn.setAttribute('aria-pressed','true'); }
+        localStorage.setItem('theme','dark');
+      } else {
+        root.classList.remove('dark');
+        if (themeBtn) { themeBtn.textContent = '🌙 Dark mode'; themeBtn.setAttribute('aria-pressed','false'); }
+        localStorage.setItem('theme','light');
+      }
+    }
+
+    try {
+      const saved = localStorage.getItem('theme');
+      setTheme(saved !== 'light'); // default dark
+    } catch (err) {
+      console.warn('localStorage unavailable', err);
+      setTheme(true);
+    }
+
+    if (themeBtn){
+      themeBtn.addEventListener('click', (e) => {
+        const isDark = root.classList.contains('dark');
+        setTheme(!isDark);
+      });
+    } else {
+      console.warn('theme button not found');
+    }
+
+    // Mobile menu
+    const navToggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('menu');
+    if (navToggle && menu){
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', (!expanded).toString());
+        menu.classList.toggle('open', !expanded);
+      });
+    }
+
+    // Modal logic with fallbacks for browsers without showModal
+    const modalButtons = document.querySelectorAll('[data-modal]');
+    modalButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = btn.dataset.modal;
+        const modal = document.getElementById(id);
+        if (!modal) return;
+        if (typeof modal.showModal === 'function'){
+          try { modal.showModal(); } catch (err) { modal.setAttribute('open',''); }
+        } else {
+          // fallback: add open attribute and add backdrop
+          modal.setAttribute('open','');
+          // add simple backdrop style
+          if (!document.querySelector('.polybackdrop')){
+            const bb = document.createElement('div');
+            bb.className = 'polybackdrop';
+            bb.style.position = 'fixed';
+            bb.style.inset = '0';
+            bb.style.background = 'rgba(0,0,0,0.55)';
+            bb.style.zIndex = '48';
+            document.body.appendChild(bb);
+            bb.addEventListener('click', () => {
+              // close all dialogs
+              document.querySelectorAll('dialog[open]').forEach(d => d.removeAttribute('open'));
+              bb.remove();
+            });
+          }
+        }
+      });
+    });
+
+    // Close buttons + click outside + ESC
+    document.querySelectorAll('dialog.modal').forEach(dialog => {
+      // close btn
+      const closeBtn = dialog.querySelector('.close-btn');
+      if (closeBtn){
+        closeBtn.addEventListener('click', () => {
+          if (typeof dialog.close === 'function') dialog.close(); else dialog.removeAttribute('open');
+          // remove polybackdrop if present
+          const pb = document.querySelector('.polybackdrop');
+          if (pb) pb.remove();
+        });
+      }
+
+      // click on backdrop (native) -> close
+      dialog.addEventListener('click', (e) => {
+        if (e.target === dialog){
+          if (typeof dialog.close === 'function') dialog.close(); else dialog.removeAttribute('open');
+          const pb = document.querySelector('.polybackdrop'); if (pb) pb.remove();
+        }
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape'){
+        document.querySelectorAll('dialog[open]').forEach(d => { if (typeof d.close === 'function') d.close(); else d.removeAttribute('open'); });
+        const pb = document.querySelector('.polybackdrop'); if (pb) pb.remove();
+      }
+    });
+
+    // Contact form (simple fetch to Formspree)
+    const form = document.getElementById('contact-form');
+    if (form){
+      form.addEventListener('submit', async (ev) => {
+        ev.preventDefault();
+        const data = new FormData(form);
+        try {
+          const res = await fetch(form.action, { method:'POST', body:data, headers:{ Accept:'application/json' }});
+          if (res.ok) {
+            alert('Thank you! Your message has been sent.');
+            form.reset();
+          } else {
+            alert('Oops! There was a problem sending the message.');
+          }
+        } catch (err) {
+          console.error('form error', err);
+          alert('Network error while sending message.');
+        }
+      });
+    }
+
+    // very small entrance fade-up for sections (IntersectionObserver)
+    (function(){
+      const els = document.querySelectorAll('.hero-text, .card, .section-head, .about-inner, .contact-form');
+      if (!('IntersectionObserver' in window)) { els.forEach(el => el.style.opacity = 1); return; }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting){
+            entry.target.style.transition = 'opacity .6s ease, transform .6s ease';
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      els.forEach((el, idx) => {
+        el.style.opacity = 0; el.style.transform = 'translateY(12px)';
+        io.observe(el);
+      });
+    })();
+
+    // debug quick check
+    console.log('DOM ready. Registered modal buttons:', modalButtons.length);
+  </script>
 </body>
 </html>
-
 
