@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+  // Theme toggle
   const themeBtn = document.getElementById('theme-toggle');
 
   function updateButton() {
@@ -14,36 +15,43 @@ document.addEventListener('DOMContentLoaded', () => {
     updateButton();
   });
 
-  updateButton(); // ustawienie przycisku przy załadowaniu strony
-});
+  updateButton(); // ustawienie przycisku przy załadowaniu
 
-  // Mobile nav toggle
-  const navToggle = document.querySelector('.nav-toggle');
-  const menu = document.getElementById('menu');
-  navToggle.addEventListener('click', () => {
-    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
-    navToggle.setAttribute('aria-expanded', !expanded);
-    menu.classList.toggle('open');
-  });
-
-  // Project modals
-  const modalLinks = document.querySelectorAll('[data-modal]');
+  // Modale
+  const modalLinks = document.querySelectorAll('.card .btn.primary');
   modalLinks.forEach(link => {
     const modalId = link.dataset.modal;
     const modal = document.getElementById(modalId);
     link.addEventListener('click', e => {
       e.preventDefault();
-      if (modal) modal.showModal();
+      if (modal) {
+        modal.showModal();
+        modal.scrollTop = 0;
+      }
     });
   });
 
-  // Close modals via button inside <form method="dialog">
-  const closeButtons = document.querySelectorAll('.modal form button');
-  closeButtons.forEach(btn => btn.addEventListener('click', () => {
-    btn.closest('dialog').close();
-  }));
+  // Klik poza modal zamyka go
+  document.querySelectorAll('dialog.modal').forEach(dialog => {
+    dialog.addEventListener('click', e => {
+      const rect = dialog.getBoundingClientRect();
+      if (
+        e.clientY < rect.top ||
+        e.clientY > rect.bottom ||
+        e.clientX < rect.left ||
+        e.clientX > rect.right
+      ) {
+        dialog.close();
+      }
+    });
+  });
 
-  // Footer year
-  document.getElementById('year').textContent = new Date().getFullYear();
+  // Close button w modalu
+  document.querySelectorAll('.modal .close-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      const dialog = btn.closest('dialog');
+      if (dialog) dialog.close();
+    });
+  });
 });
 
