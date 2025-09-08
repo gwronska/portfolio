@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateButton();
   });
 
-  updateButton(); // przy starcie
+  updateButton();
 
   // Menu toggle
   const navToggle = document.querySelector('.nav-toggle');
@@ -32,17 +32,26 @@ document.addEventListener('DOMContentLoaded', () => {
   modalLinks.forEach(link => {
     const modalId = link.dataset.modal;
     const modal = document.getElementById(modalId);
+
     link.addEventListener('click', e => {
       e.preventDefault();
-      if (modal) {
+      if (modal && typeof modal.showModal === 'function') {
         modal.showModal();
         modal.scrollTop = 0;
+      } else {
+        console.warn('Modal not found or showModal not supported:', modalId);
       }
     });
   });
 
-  // Klik poza modal zamyka go
+  // Close buttons
   document.querySelectorAll('dialog.modal').forEach(dialog => {
+    const closeBtn = dialog.querySelector('.close-btn');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => dialog.close());
+    }
+
+    // Klik poza modal
     dialog.addEventListener('click', e => {
       const rect = dialog.getBoundingClientRect();
       if (
@@ -54,13 +63,10 @@ document.addEventListener('DOMContentLoaded', () => {
         dialog.close();
       }
     });
-
-    // Close button w modalu
-    const closeBtn = dialog.querySelector('.close-btn'); // <--- zmieniono
-    if (closeBtn) {
-      closeBtn.addEventListener('click', () => dialog.close());
-    }
   });
+
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
 });
 
 
