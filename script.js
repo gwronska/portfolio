@@ -1,9 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Theme toggle
   const themeBtn = document.getElementById('theme-toggle');
+
+  function updateButton() {
+    if (document.body.classList.contains('dark')) {
+      themeBtn.textContent = '🌞 Light mode';
+    } else {
+      themeBtn.textContent = '🌙 Dark mode';
+    }
+  }
+
   themeBtn.addEventListener('click', () => {
     document.body.classList.toggle('dark');
+    updateButton();
   });
+
+  updateButton(); // ustawienie przycisku przy załadowaniu strony
+});
 
   // Mobile nav toggle
   const navToggle = document.querySelector('.nav-toggle');
