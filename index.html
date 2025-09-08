@@ -515,7 +515,29 @@
         io.observe(el);
       });
     })();
+    
+/* Dark mode: ciemne tło strony zamiast gradientu */
+html.dark body {
+  background: var(--bg); /* tylko ciemne tło, bez gradientu */
+}
 
+/* Modale */
+dialog.modal {
+  border: none;
+  border-radius: 14px;
+  padding: 0;
+  max-width: min(96vw,1100px);
+  background: var(--bg); /* ciemne w dark mode */
+  box-shadow: var(--shadow);
+  color: var(--text);
+  overflow-y: auto;
+  max-height: 90vh;
+  animation: slideDown 0.3s ease-out;
+}
+
+dialog::backdrop {
+  background: rgba(0,0,0,0.55);
+}
     // debug quick check
     console.log('DOM ready. Registered modal buttons:', modalButtons.length);
   </script>
