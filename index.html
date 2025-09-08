@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gabriela — Portfolio</title>
+  <!-- Blokada indeksowania -->
+  <meta name="robots" content="noindex, nofollow">
+  <!-- Open Graph (opcjonalnie) -->
+  <meta property="og:title" content="Portfolio — Gabriela">
+  <meta property="og:description" content="Moje projekty UX/UI i front‑end.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/project-1.svg">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Pomiń do treści</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#"><span class="dot"></span>Gabriela</a>
+      <nav class="nav" aria-label="Główne">
+        <button class="nav-toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+        <ul id="menu" class="menu">
+          <li><a href="#projects">Projekty</a></li>
+          <li><a href="#about">O mnie</a></li>
+          <li><a href="#contact">Kontakt</a></li>
+          <li><button id="theme-toggle" class="theme-toggle" aria-label="Przełącz motyw">🌓</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>Projektuję i buduję <span class="accent">intuicyjne</span> produkty</h1>
+          <p>Jestem <strong>Gabriela</strong> — projektantka UX/UI z doświadczeniem we wdrożeniach front‑end.
+          Aktualizuję swoje portfolio — poniżej kilka wybranych realizacji. Chętnie opowiem więcej podczas rozmowy.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#projects">Zobacz projekty</a>
+            <a class="btn ghost" href="#contact">Skontaktuj się</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img src="assets/avatar.svg" alt="Zdjęcie lub avatar Gabrieli" loading="eager" width="400" height="400">
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section projects">
+      <div class="container">
+        <div class="section-head">
+          <h2>Wybrane projekty</h2>
+          <p class="muted">Sekcja łatwa do edycji — dodajemy nowe kafelki z Twoimi PNG.</p>
+        </div>
+        <div class="grid">
+          <!-- PROJEKT 1 -->
+          <article class="card">
+            <a class="card-cover" href="#" data-modal="project1">
+              <img src="assets/project-1.svg" alt="Miniatura: Projekt 1">
+            </a>
+            <div class="card-body">
+              <h3>Projekt 1: Aplikacja mobilna</h3>
+              <p class="muted">UX research → prototyp → testy → handoff</p>
+              <div class="tags">
+                <span>UX</span><span>UI</span><span>Prototyp</span>
+              </div>
+              <div class="card-links">
+                <a href="#" aria-disabled="true">Case study (wkrótce)</a>
+                <a href="#" aria-disabled="true">Live demo</a>
+              </div>
+            </div>
+          </article>
+          <!-- PROJEKT 2 -->
+          <article class="card">
+            <a class="card-cover" href="#" data-modal="project2">
+              <img src="assets/project-2.svg" alt="Miniatura: Projekt 2">
+            </a>
+            <div class="card-body">
+              <h3>Projekt 2: Dashboard webowy</h3>
+              <p class="muted">Design system, komponenty i interakcje</p>
+              <div class="tags">
+                <span>Design System</span><span>Front‑end</span>
+              </div>
+              <div class="card-links">
+                <a href="#" aria-disabled="true">Repozytorium</a>
+                <a href="#" aria-disabled="true">Live demo</a>
+              </div>
+            </div>
+          </article>
+          <!-- PROJEKT 3 -->
+          <article class="card">
+            <a class="card-cover" href="#" data-modal="project3">
+              <img src="assets/project-3.svg" alt="Miniatura: Projekt 3">
+            </a>
+            <div class="card-body">
+              <h3>Projekt 3: Strona marketingowa</h3>
+              <p class="muted">Animacje mikrointerakcji i A/B testy</p>
+              <div class="tags">
+                <span>UI</span><span>Animacje</span>
+              </div>
+              <div class="card-links">
+                <a href="#" aria-disabled="true">Case study</a>
+                <a href="#" aria-disabled="true">Live demo</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section about">
+      <div class="container about-inner">
+        <div>
+          <h2>O mnie</h2>
+          <p>
+            Łączę <strong>research</strong>, projektowanie interfejsu i dbałość o szczegóły w kodzie. 
+            Lubię współpracę z zespołami produktowymi, iteracje i testy z użytkownikami. 
+            Po godzinach rozwijam biblioteki komponentów i uczę się motion designu.
+          </p>
+          <ul class="bullets">
+            <li><span>✓</span> Projektowanie end‑to‑end: discovery → delivery</li>
+            <li><span>✓</span> Narzędzia: Figma, Webflow, GitHub</li>
+            <li><span>✓</span> Front‑end: HTML, CSS, JS</li>
+          </ul>
+          <div class="btn-row">
+            <a class="btn primary" href="#contact">Dostępność projekcyjna</a>
+            <a class="btn ghost" href="Gabriela-CV.pdf" aria-disabled="true">Pobierz CV (PDF)</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Kontakt</h2>
+          <p class="muted">Najlepiej e‑mail lub LinkedIn. Formularz używa usługi zewnętrznej (np. Formspree).</p>
+        </div>
+        <form class="contact-form" action="https://formspree.io/f/your-id" method="POST">
+          <div class="field">
+            <label for="name">Imię</label>
+            <input id="name" name="name" type="text" required>
+          </div>
+          <div class="field">
+            <label for="email">E‑mail</label>
+            <input id="email" name="email" type="email" required>
+          </div>
+          <div class="field">
+            <label for="message">Wiadomość</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button class="btn primary" type="submit">Wyślij</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>© <span id="year"></span> Gabriela. Wszystkie prawa zastrzeżone.</small>
+      <div class="socials">
+        <a href="https://github.com/TwojLogin" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/TwojProfil" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:twoj.email@example.com">E‑mail</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modale projektów (prosty lightbox) -->
+  <dialog id="project1" class="modal">
+    <figure>
+      <img src="assets/project-1.svg" alt="Projekt 1 — cały ekran">
+      <figcaption>Opis projektu 1 — wstaw własny tekst i PNG.</figcaption>
+    </figure>
+    <form method="dialog">
+      <button class="btn ghost">Zamknij</button>
+    </form>
+  </dialog>
+  <dialog id="project2" class="modal">
+    <figure>
+      <img src="assets/project-2.svg" alt="Projekt 2 — cały ekran">
+      <figcaption>Opis projektu 2 — wstaw własny tekst i PNG.</figcaption>
+    </figure>
+    <form method="dialog">
+      <button class="btn ghost">Zamknij</button>
+    </form>
+  </dialog>
+  <dialog id="project3" class="modal">
+    <figure>
+      <img src="assets/project-3.svg" alt="Projekt 3 — cały ekran">
+      <figcaption>Opis projektu 3 — wstaw własny tekst i PNG.</figcaption>
+    </figure>
+    <form method="dialog">
+      <button class="btn ghost">Zamknij</button>
+    </form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
