@@ -1,22 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Theme toggle
-  const themeBtn = document.getElementById('theme-toggle');
-  const htmlEl = document.documentElement;
+const themeBtn = document.getElementById('theme-toggle');
+const htmlEl = document.documentElement; // zamiast body
 
-  function updateButton() {
-    if (htmlEl.classList.contains('dark')) {
-      themeBtn.textContent = '🌞 Light mode';
-    } else {
-      themeBtn.textContent = '🌙 Dark mode';
-    }
+function updateButton() {
+  if (htmlEl.classList.contains('dark')) {
+    themeBtn.textContent = '🌞 Light mode';
+  } else {
+    themeBtn.textContent = '🌙 Dark mode';
   }
+}
 
-  themeBtn.addEventListener('click', () => {
-    htmlEl.classList.toggle('dark');
-    updateButton();
-  });
-
+themeBtn.addEventListener('click', () => {
+  htmlEl.classList.toggle('dark');
   updateButton();
+});
+
+updateButton(); // przy starcie
+
 
   // Menu toggle
   const navToggle = document.querySelector('.nav-toggle');
@@ -27,19 +28,20 @@ document.addEventListener('DOMContentLoaded', () => {
     menu.style.display = expanded ? 'none' : 'flex';
   });
 
-  // Modale
-  const modalLinks = document.querySelectorAll('.card .btn.primary');
-  modalLinks.forEach(link => {
-    const modalId = link.dataset.modal;
-    const modal = document.getElementById(modalId);
-    link.addEventListener('click', e => {
-      e.preventDefault();
-      if (modal) {
-        modal.showModal();
-        modal.scrollTop = 0;
-      }
-    });
+// Modale
+const modalLinks = document.querySelectorAll('[data-modal]');
+modalLinks.forEach(link => {
+  const modalId = link.dataset.modal;
+  const modal = document.getElementById(modalId);
+  link.addEventListener('click', e => {
+    e.preventDefault();
+    if (modal) {
+      modal.showModal();
+      modal.scrollTop = 0;
+    }
   });
+});
+
 
   // Klik poza modal zamyka go
   document.querySelectorAll('dialog.modal').forEach(dialog => {
