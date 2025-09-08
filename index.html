@@ -3,32 +3,59 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gabriela — Portfolio (complete)</title>
+  <title>Gabriela — Portfolio (test)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    /* ===== Reset ===== */
+    /* ===== Inline CSS (complete) ===== */
+
+    /* Reset */
     *, *::before, *::after { box-sizing: border-box; }
     html,body { margin:0; padding:0; height:100%; }
-    body { font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; line-height:1.6; background:var(--bg); color:var(--text); transition: background .28s ease, color .28s ease; }
+    body { font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; line-height:1.6; }
 
-    a{ color:inherit; text-decoration:none; }
-    img{ display:block; max-width:100%; height:auto; }
-
-    /* ===== Variables ===== */
+    /* Theme vars: light default; dark overrides on html.dark */
     :root{
-      --bg:#ffffff; --bg-soft:#f6f7fb; --text:#0b0c10; --muted:#6b7280; --brand:#3b82f6; --brand-2:#0ea5e9; --card:#ffffff; --border: rgba(2,6,23,0.06); --shadow:0 8px 24px rgba(2,6,23,0.06);
+      --bg: #ffffff;
+      --bg-soft:#f6f7fb;
+      --text:#0b0c10;
+      --muted:#6b7280;
+      --brand:#3b82f6;
+      --brand-2:#0ea5e9;
+      --card:#ffffff;
+      --border: rgba(2,6,23,0.06);
+      --shadow: 0 8px 24px rgba(2,6,23,0.06);
     }
     html.dark{
-      --bg:#0b0c10; --bg-soft:#111218; --text:#f7f7fb; --muted:#a8a9b3; --brand:#3b82f6; --brand-2:#0ea5e9; --card:#151723; --border:#242638; --shadow:0 12px 36px rgba(0,0,0,0.35);
+      --bg:#0b0c10;
+      --bg-soft:#111218;
+      --text:#f7f7fb;
+      --muted:#a8a9b3;
+      --brand:#3b82f6;
+      --brand-2:#0ea5e9;
+      --card:#151723;
+      --border:#242638;
+      --shadow: 0 12px 36px rgba(0,0,0,0.35);
     }
 
-    /* ===== Containers ===== */
-    .container{ width:min(1100px,92%); margin:0 auto; }
+    body{
+      background: linear-gradient(180deg, var(--bg) 0%, rgba(0,0,0,0.02) 100%);
+      color: var(--text);
+      min-height:100%;
+      transition: background .28s ease, color .28s ease;
+    }
 
-    /* ===== Header ===== */
-    .site-header{ position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px); background:rgba(14,15,26,0.56); border-bottom:1px solid var(--border); }
+    a{ color: inherit; text-decoration:none; }
+    img{ display:block; max-width:100%; height:auto; }
+
+    .container{ width:min(1100px, 92%); margin:0 auto; }
+
+    /* Header */
+    .site-header{
+      position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(8px);
+      background: rgba(14,15,26,0.56); border-bottom:1px solid var(--border);
+    }
     .header-inner{ display:flex; align-items:center; justify-content:space-between; padding:12px 0; }
     .brand{ font-weight:800; display:flex; align-items:center; gap:.6rem; }
     .brand .dot{ width:.7rem; height:.7rem; border-radius:999px; background:linear-gradient(45deg,var(--brand),var(--brand-2)); display:inline-block; }
@@ -36,7 +63,7 @@
     .nav-toggle{ display:none; }
     .theme-toggle{ background:transparent; border:1px solid var(--border); padding:.45rem .7rem; border-radius:.6rem; cursor:pointer; color:var(--text); }
 
-    /* ===== Hero ===== */
+    /* Hero */
     .hero{ padding:56px 0 32px; border-bottom:1px solid var(--border); }
     .hero-inner{ display:grid; grid-template-columns:1.25fr .9fr; gap:2.2rem; align-items:center; }
     .hero h1{ font-size:clamp(28px,4vw,44px); margin:0 0 .6rem; line-height:1.12; }
@@ -44,20 +71,18 @@
     .accent{ background: linear-gradient(45deg,var(--brand),var(--brand-2)); -webkit-background-clip:text; background-clip:text; color:transparent; }
     .cta-row{ display:flex; gap:.8rem; flex-wrap:wrap; }
 
-    /* ===== Buttons ===== */
-    .btn{ display:inline-flex; align-items:center; justify-content:center; padding:.7rem 1.1rem; font-weight:600; border-radius:1rem; border:1px solid var(--border); cursor:pointer; transition:transform .18s ease, box-shadow .18s ease; }
+    /* Buttons */
+    .btn{ display:inline-flex; align-items:center; justify-content:center; padding:.7rem 1.1rem; font-weight:600; border-radius:1rem; border:1px solid var(--border); cursor:pointer; transition:transform .18s ease, box-shadow .18s ease; background:transparent; color:var(--text); }
     .btn.primary{ background: linear-gradient(45deg,var(--brand),var(--brand-2)); color:#fff; border:none; }
     .btn.ghost{ background:transparent; color:var(--text); border:1px solid var(--border); }
     .btn:hover{ transform:translateY(-3px); }
-    .btn-secondary{ background-color:#f0f0f0; color:#111; border:1px solid #ccc; }
-    .dark .btn-secondary{ background-color:#333; color:#fff; border:1px solid #555; }
 
-    /* ===== Sections ===== */
+    /* Sections */
     .section{ padding:56px 0; }
     .section-head{ display:flex; align-items:flex-end; justify-content:space-between; gap:1rem; margin-bottom:18px; }
     .muted{ color:var(--muted); }
 
-    /* ===== Grid & Cards ===== */
+    /* Grid & cards */
     .grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:18px; }
     .card{ grid-column: span 4; background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01)); border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column; }
     .card-cover{ display:block; border:0; padding:0; background:transparent; cursor:pointer; }
@@ -67,147 +92,431 @@
     .tags{ display:flex; gap:.5rem; flex-wrap:wrap; margin:.4rem 0 .8rem; }
     .tags span{ font-size:12px; padding:.2rem .5rem; border-radius:999px; background:transparent; border:1px solid var(--border); color:var(--muted); }
 
-    /* ===== About ===== */
+    /* About */
     .about-inner{ display:grid; grid-template-columns:1fr; gap:1rem; }
     .bullets{ list-style:none; padding:0; margin:1rem 0; display:grid; gap:.4rem; }
     .bullets li span{ margin-right:.5rem; color:var(--brand-2); }
 
-    /* ===== Contact form ===== */
+    /* Contact form */
     .contact-form{ display:grid; gap:12px; max-width:560px; }
     .field{ display:grid; gap:6px; }
     input, textarea{ background:var(--bg-soft); color:var(--text); border:1px solid var(--border); border-radius:10px; padding:.8rem 1rem; outline-color:var(--brand-2); }
     input:focus, textarea:focus{ box-shadow: 0 0 0 4px rgba(14,165,233,0.08); }
 
-    /* ===== Footer ===== */
+    /* Footer */
     .site-footer{ border-top:1px solid var(--border); padding:20px 0; color:var(--muted); }
     .footer-inner{ display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
 
-    /* ===== Dialog / Modals ===== */
-    dialog.modal{ border:none; border-radius:14px; padding:0; max-width:min(96vw,1100px); background:var(--bg); box-shadow:var(--shadow); color:var(--text); overflow-y:auto; max-height:90vh; position:relative; animation: slideDown 0.3s ease-out; }
+    /* Dialog/modal (native) */
+    dialog.modal{ border: none; border-radius:14px; padding:0; max-width:min(96vw,1100px); background:var(--bg); box-shadow:var(--shadow); color:var(--text); overflow-y:auto; max-height:90vh; }
     dialog::backdrop{ background: rgba(0,0,0,0.55); }
-    dialog figure{ margin:0; }
-    dialog img{ width:100%; height:auto; display:block; border-top-left-radius:14px; border-top-right-radius:14px; }
-    dialog figcaption{ padding:16px; }
-    .modal-close-x{ position:absolute; top:12px; right:12px; font-size:1.4rem; font-weight:bold; color:var(--text); background:transparent; border:none; cursor:pointer; line-height:1; }
 
-    @keyframes slideDown{0%{transform:translateY(-30px);opacity:0;}100%{transform:translateY(0);opacity:1;}}
+    dialog.modal figure{ margin:0; }
+    dialog.modal img{ width:100%; height:auto; display:block; border-top-left-radius:14px; border-top-right-radius:14px; }
+    dialog.modal figcaption{ padding:16px; }
+
+    .close-btn{ margin-top:14px; }
+
+    /* Responsive */
+    @media (max-width:960px){
+      .hero-inner{ grid-template-columns:1fr; text-align:left; }
+      .grid{ grid-template-columns: repeat(6, 1fr); gap:14px; }
+      .card{ grid-column: span 3; }
+    }
+    @media (max-width:560px){
+      .grid{ grid-template-columns: repeat(2,1fr); }
+      .card{ grid-column: span 2; }
+      .menu{ display:none; }
+      .nav-toggle{ display:inline-flex; background:transparent; border:1px solid var(--border); padding:.45rem .7rem; border-radius:.6rem; cursor:pointer; }
+      .menu.open{ display:flex; flex-direction:column; gap:.75rem; padding:.75rem; background:var(--bg); position:absolute; right:1rem; top:64px; border-radius:8px; border:1px solid var(--border); }
+    }
+    @media (max-width:420px){
+      .grid{ grid-template-columns:1fr; }
+      .card{ grid-column: span 1; }
+    }
+
+    /* small helper */
+    .sr-only{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
   </style>
 </head>
 <body>
   <a class="sr-only" href="#main">Skip to content</a>
 
-  <!-- Header / Hero / Sections / Cards omitted for brevity, keep all existing content -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a class="brand" href="#"><span class="dot" aria-hidden="true"></span>Gabriela</a>
 
-  <!-- ===== Modals 5 projects ===== -->
+      <nav class="nav" aria-label="Main">
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menu</button>
+        <ul id="menu" class="menu" role="menubar">
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#about">About Me</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><button id="theme-toggle" class="theme-toggle" type="button" aria-pressed="true">🌞 Light mode</button></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>I craft <span class="accent">impactful</span> user experiences</h1>
+          <p>As a devoted UX designer, I thrive on creating impactful user experiences. While deeply rooted in user-centered design principles, I'm increasingly intrigued by More-than-Human Design, recognizing the significance of considering non-human impacts. My journey is fueled by the excitement of uncovering user needs through research.</p>
+          <div class="cta-row">
+            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn ghost" href="#contact">Get in Touch</a>
+          </div>
+        </div>
+        <div class="hero-media">
+          <img src="https://images.unsplash.com/photo-1595745688820-1a8bca9dd00f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Gabriela avatar" loading="eager" width="400" height="400">
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section projects">
+      <div class="container">
+        <div class="section-head">
+          <h2>Selected Projects</h2>
+          <p class="muted">Easily editable section — add new cards with your PNGs.</p>
+        </div>
+
+        <div class="grid">
+          <!-- 5 project cards (images from React data) -->
+          <article class="card">
+            <button class="card-cover" type="button" data-modal="project1" aria-haspopup="dialog" aria-controls="project1">
+              <img src="https://images.unsplash.com/photo-1649442746245-f51f4b76963f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="YOPE thumbnail">
+            </button>
+            <div class="card-body">
+              <h3>YOPE Website Redesign</h3>
+              <p class="muted">UX/UI design → prototype → accessibility</p>
+              <div class="tags"><span>UX</span><span>UI</span><span>Prototype</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <button class="card-cover" type="button" data-modal="project2" aria-haspopup="dialog" aria-controls="project2">
+              <img src="https://images.unsplash.com/photo-1661877066187-05e28240439f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="GlossoVR thumbnail">
+            </button>
+            <div class="card-body">
+              <h3>GlossoVR</h3>
+              <p class="muted">VR language learning → user research → visualization</p>
+              <div class="tags"><span>VR</span><span>UX</span><span>Research</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <button class="card-cover" type="button" data-modal="project3" aria-haspopup="dialog" aria-controls="project3">
+              <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="WebPOS thumbnail">
+            </button>
+            <div class="card-body">
+              <h3>WebPOS Web Application</h3>
+              <p class="muted">Retail POS → interface → workflows → prototypes</p>
+              <div class="tags"><span>UX</span><span>UI</span><span>Prototyping</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <button class="card-cover" type="button" data-modal="project4" aria-haspopup="dialog" aria-controls="project4">
+              <img src="https://images.unsplash.com/photo-1670875329379-de986110c8ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Comarch IoT thumbnail">
+            </button>
+            <div class="card-body">
+              <h3>Comarch IoT MES – Operator Panel</h3>
+              <p class="muted">Industrial interface → workflow → prototyping</p>
+              <div class="tags"><span>UX</span><span>UI</span><span>Wireframing</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <button class="card-cover" type="button" data-modal="project5" aria-haspopup="dialog" aria-controls="project5">
+              <img src="https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Comarch Mobile thumbnail">
+            </button>
+            <div class="card-body">
+              <h3>Comarch Mobile – Sales App Redesign</h3>
+              <p class="muted">Mobile UX → field workflows → interactive prototypes</p>
+              <div class="tags"><span>UX</span><span>UI</span><span>Mobile</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section about">
+      <div class="container about-inner">
+        <div>
+          <h2>About Me</h2>
+          <p>Passionate about creativity in all its forms, I find joy in expressing myself through various art mediums – from painting and sketching to jewelry making, photography, and sculpting. I also enjoy exploring digital art and experimenting with 3D models. Alongside my artistic pursuits, I'm dedicated to advancing my education, recently achieving a milestone with a paper acceptance at the IEEE VR conference. Beyond that, I indulge in the culinary arts, finding solace in cooking and baking. I am also a proud cat enthusiast.</p>
+          <ul class="bullets">
+            <li><span>✓</span> End-to-end design: discovery → delivery</li>
+            <li><span>✓</span> Tools: Figma, Webflow, GitHub</li>
+            <li><span>✓</span> Front-end: HTML, CSS, JS</li>
+          </ul>
+          <div class="btn-row">
+            <a class="btn primary" href="#contact">Let's Collaborate</a>
+            <a class="btn ghost" href="Gabriela-CV.pdf" aria-disabled="true">Download CV (PDF)</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Contact</h2>
+          <p class="muted">Best via email or LinkedIn. Form powered by external service (e.g., Formspree).</p>
+        </div>
+
+        <form id="contact-form" class="contact-form" action="https://formspree.io/f/your-id" method="POST">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+          </div>
+          <button class="btn primary" type="submit">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <small>© <span id="year"></span> Gabriela. All rights reserved.</small>
+      <div class="socials">
+        <a href="https://github.com/TwojLogin" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/TwojProfil" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:gabriela.m.wronska@gmail.com">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modals -->
   <dialog id="project1" class="modal" role="dialog" aria-labelledby="project1-title">
     <figure>
-      <img src="https://images.unsplash.com/photo-1649442746245-f51f4b76963f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Project 1">
+      <img src="https://images.unsplash.com/photo-1649442746245-f51f4b76963f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="YOPE full">
       <figcaption>
-        <h3 id="project1-title">Project 1 Title</h3>
-        <p>Project 1 description...</p>
-        <button class="modal-close-x" type="button" aria-label="Close modal">&times;</button>
+        <h3 id="project1-title">YOPE Website Redesign</h3>
+        <p><strong>Project Overview:</strong> YOPE is a Polish natural cosmetics brand ...</p>
+        <p><strong>My Role:</strong> Sole UX/UI designer ...</p>
+        <p><strong>Process:</strong></p>
+        <ul>
+          <li>Heuristic analysis to identify usability issues</li>
+          <li>Defined project goals and created user stories</li>
+          <li>Wireframing desktop and mobile views</li>
+          <li>High-fidelity prototyping in Figma</li>
+          <li>Accessibility testing and recommendations</li>
+        </ul>
+        <button class="btn ghost close-btn" type="button">Close</button>
       </figcaption>
     </figure>
   </dialog>
 
   <dialog id="project2" class="modal" role="dialog" aria-labelledby="project2-title">
     <figure>
-      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Project 2">
+      <img src="https://images.unsplash.com/photo-1661877066187-05e28240439f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="GlossoVR full">
       <figcaption>
-        <h3 id="project2-title">Project 2 Title</h3>
-        <p>Project 2 description...</p>
-        <button class="modal-close-x" type="button" aria-label="Close modal">&times;</button>
+        <h3 id="project2-title">GlossoVR</h3>
+        <p><strong>Project Overview:</strong> GlossoVR is a VR-based language learning platform ...</p>
+        <button class="btn ghost close-btn" type="button">Close</button>
       </figcaption>
     </figure>
   </dialog>
 
   <dialog id="project3" class="modal" role="dialog" aria-labelledby="project3-title">
     <figure>
-      <img src="https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Project 3">
+      <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="WebPOS full">
       <figcaption>
-        <h3 id="project3-title">Project 3 Title</h3>
-        <p>Project 3 description...</p>
-        <button class="modal-close-x" type="button" aria-label="Close modal">&times;</button>
+        <h3 id="project3-title">WebPOS Web Application</h3>
+        <p><strong>Project Overview:</strong> A web-based POS system for retail ...</p>
+        <button class="btn ghost close-btn" type="button">Close</button>
       </figcaption>
     </figure>
   </dialog>
 
   <dialog id="project4" class="modal" role="dialog" aria-labelledby="project4-title">
     <figure>
-      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Project 4">
+      <img src="https://images.unsplash.com/photo-1670875329379-de986110c8ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Comarch IoT full">
       <figcaption>
-        <h3 id="project4-title">Project 4 Title</h3>
-        <p>Project 4 description...</p>
-        <button class="modal-close-x" type="button" aria-label="Close modal">&times;</button>
+        <h3 id="project4-title">Comarch IoT MES – Operator Panel</h3>
+        <p><strong>Project Overview:</strong> Industrial operator interface ...</p>
+        <button class="btn ghost close-btn" type="button">Close</button>
       </figcaption>
     </figure>
   </dialog>
 
   <dialog id="project5" class="modal" role="dialog" aria-labelledby="project5-title">
     <figure>
-      <img src="https://images.unsplash.com/photo-1508780709619-79562169bc64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Project 5">
+      <img src="https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080" alt="Comarch Mobile full">
       <figcaption>
-        <h3 id="project5-title">Project 5 Title</h3>
-        <p>Project 5 description...</p>
-        <button class="modal-close-x" type="button" aria-label="Close modal">&times;</button>
+        <h3 id="project5-title">Comarch Mobile – Sales App Redesign</h3>
+        <p><strong>Project Overview:</strong> Redesigned mobile app for sales teams ...</p>
+        <button class="btn ghost close-btn" type="button">Close</button>
       </figcaption>
     </figure>
   </dialog>
 
   <script>
-    // ===== JS =====
+    // ===== Inline JS (debug-friendly) =====
+    console.log('inline script loaded');
 
     // Footer year
     const yearEl = document.getElementById('year');
-    if(yearEl) yearEl.textContent = new Date().getFullYear();
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // Theme toggle
+    // Theme toggle (localStorage)
     const themeBtn = document.getElementById('theme-toggle');
     const root = document.documentElement;
+
     function setTheme(dark){
-      if(dark){
+      if (dark){
         root.classList.add('dark');
-        if(themeBtn){ themeBtn.textContent='🌞 Light mode'; themeBtn.setAttribute('aria-pressed','true'); }
+        if (themeBtn) { themeBtn.textContent = '🌞 Light mode'; themeBtn.setAttribute('aria-pressed','true'); }
         localStorage.setItem('theme','dark');
       } else {
         root.classList.remove('dark');
-        if(themeBtn){ themeBtn.textContent='🌙 Dark mode'; themeBtn.setAttribute('aria-pressed','false'); }
+        if (themeBtn) { themeBtn.textContent = '🌙 Dark mode'; themeBtn.setAttribute('aria-pressed','false'); }
         localStorage.setItem('theme','light');
       }
     }
-    try{ const saved=localStorage.getItem('theme'); setTheme(saved!=='light'); }catch(err){ setTheme(true); }
-    if(themeBtn){ themeBtn.addEventListener('click',()=>{ setTheme(!root.classList.contains('dark')); }); }
+
+    try {
+      const saved = localStorage.getItem('theme');
+      setTheme(saved !== 'light'); // default dark
+    } catch (err) {
+      console.warn('localStorage unavailable', err);
+      setTheme(true);
+    }
+
+    if (themeBtn){
+      themeBtn.addEventListener('click', (e) => {
+        const isDark = root.classList.contains('dark');
+        setTheme(!isDark);
+      });
+    } else {
+      console.warn('theme button not found');
+    }
 
     // Mobile menu
-    const navToggle=document.querySelector('.nav-toggle');
-    const menu=document.getElementById('menu');
-    if(navToggle && menu){ navToggle.addEventListener('click',()=>{ const expanded=navToggle.getAttribute('aria-expanded')==='true'; navToggle.setAttribute('aria-expanded',(!expanded).toString()); menu.classList.toggle('open',!expanded); }); }
+    const navToggle = document.querySelector('.nav-toggle');
+    const menu = document.getElementById('menu');
+    if (navToggle && menu){
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', (!expanded).toString());
+        menu.classList.toggle('open', !expanded);
+      });
+    }
 
-    // Modals
-    const modalButtons=document.querySelectorAll('[data-modal]');
-    modalButtons.forEach(btn=>{ btn.addEventListener('click',()=>{ const id=btn.dataset.modal; const modal=document.getElementById(id); if(modal && typeof modal.showModal==='function') modal.showModal(); }); });
-    document.querySelectorAll('.modal-close-x').forEach(btn=>{ btn.addEventListener('click',()=>{ const modal=btn.closest('dialog'); if(modal && typeof modal.close==='function') modal.close(); }); });
-    document.querySelectorAll('dialog.modal').forEach(dialog=>{ dialog.addEventListener('click',e=>{ if(e.target===dialog) dialog.close(); }); });
-    document.addEventListener('keydown',e=>{ if(e.key==='Escape'){ document.querySelectorAll('dialog[open]').forEach(d=>d.close()); }});
+    // Modal logic with fallbacks for browsers without showModal
+    const modalButtons = document.querySelectorAll('[data-modal]');
+    modalButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const id = btn.dataset.modal;
+        const modal = document.getElementById(id);
+        if (!modal) return;
+        if (typeof modal.showModal === 'function'){
+          try { modal.showModal(); } catch (err) { modal.setAttribute('open',''); }
+        } else {
+          // fallback: add open attribute and add backdrop
+          modal.setAttribute('open','');
+          // add simple backdrop style
+          if (!document.querySelector('.polybackdrop')){
+            const bb = document.createElement('div');
+            bb.className = 'polybackdrop';
+            bb.style.position = 'fixed';
+            bb.style.inset = '0';
+            bb.style.background = 'rgba(0,0,0,0.55)';
+            bb.style.zIndex = '48';
+            document.body.appendChild(bb);
+            bb.addEventListener('click', () => {
+              // close all dialogs
+              document.querySelectorAll('dialog[open]').forEach(d => d.removeAttribute('open'));
+              bb.remove();
+            });
+          }
+        }
+      });
+    });
 
-    // IntersectionObserver animations
+    // Close buttons + click outside + ESC
+    document.querySelectorAll('dialog.modal').forEach(dialog => {
+      // close btn
+      const closeBtn = dialog.querySelector('.close-btn');
+      if (closeBtn){
+        closeBtn.addEventListener('click', () => {
+          if (typeof dialog.close === 'function') dialog.close(); else dialog.removeAttribute('open');
+          // remove polybackdrop if present
+          const pb = document.querySelector('.polybackdrop');
+          if (pb) pb.remove();
+        });
+      }
+
+      // click on backdrop (native) -> close
+      dialog.addEventListener('click', (e) => {
+        if (e.target === dialog){
+          if (typeof dialog.close === 'function') dialog.close(); else dialog.removeAttribute('open');
+          const pb = document.querySelector('.polybackdrop'); if (pb) pb.remove();
+        }
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape'){
+        document.querySelectorAll('dialog[open]').forEach(d => { if (typeof d.close === 'function') d.close(); else d.removeAttribute('open'); });
+        const pb = document.querySelector('.polybackdrop'); if (pb) pb.remove();
+      }
+    });
+
+    // Contact form (simple fetch to Formspree)
+    const form = document.getElementById('contact-form');
+    if (form){
+      form.addEventListener('submit', async (ev) => {
+        ev.preventDefault();
+        const data = new FormData(form);
+        try {
+          const res = await fetch(form.action, { method:'POST', body:data, headers:{ Accept:'application/json' }});
+          if (res.ok) {
+            alert('Thank you! Your message has been sent.');
+            form.reset();
+          } else {
+            alert('Oops! There was a problem sending the message.');
+          }
+        } catch (err) {
+          console.error('form error', err);
+          alert('Network error while sending message.');
+        }
+      });
+    }
+
+    // very small entrance fade-up for sections (IntersectionObserver)
     (function(){
-      const els=document.querySelectorAll('.hero-text,.card,.section-head,.about-inner,.contact-form');
-      if(!('IntersectionObserver' in window)){ els.forEach(el=>el.style.opacity=1); return; }
-      const io=new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-          if(entry.isIntersecting){
-            entry.target.style.transition='opacity .6s ease, transform .6s ease';
-            entry.target.style.opacity=1;
-            entry.target.style.transform='translateY(0)';
+      const els = document.querySelectorAll('.hero-text, .card, .section-head, .about-inner, .contact-form');
+      if (!('IntersectionObserver' in window)) { els.forEach(el => el.style.opacity = 1); return; }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting){
+            entry.target.style.transition = 'opacity .6s ease, transform .6s ease';
+            entry.target.style.opacity = 1;
+            entry.target.style.transform = 'translateY(0)';
             io.unobserve(entry.target);
           }
         });
-      },{threshold:0.08});
-      els.forEach((el,idx)=>{ el.style.opacity=0; el.style.transform='translateY(12px)'; io.observe(el); });
+      }, { threshold: 0.08 });
+      els.forEach((el, idx) => {
+        el.style.opacity = 0; el.style.transform = 'translateY(12px)';
+        io.observe(el);
+      });
     })();
 
-    // Debug
+    // debug quick check
     console.log('DOM ready. Registered modal buttons:', modalButtons.length);
   </script>
 </body>
