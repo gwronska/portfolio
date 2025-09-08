@@ -1,10 +1,25 @@
+/* --- Theme variables: light by default, dark overrides in .dark --- */
 :root{
+  /* light theme (defaults) */
+  --bg: #ffffff;
+  --bg-soft: #f6f8fb;
+  --fg: #0b0c10;
+  --muted: #6b7280;
+  --brand: #3b82f6;
+  --brand-2: #0ea5e9;
+  --card: #ffffff;
+  --border: #e6e9f5;
+  --shadow: 0 10px 30px rgba(2,6,23,0.06);
+}
+
+/* dark theme overrides */
+.dark {
   --bg:#0b0c10;
   --bg-soft:#111218;
   --fg:#f7f7fb;
   --muted:#a8a9b3;
-  --brand:#3b82f6;   /* jasny niebieski */
-  --brand-2:#0ea5e9; /* cyan-ish blue */
+  --brand:#3b82f6;
+  --brand-2:#0ea5e9;
   --card:#151723;
   --border:#242638;
   --shadow: 0 10px 30px rgba(0,0,0,.25);
@@ -13,9 +28,9 @@
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
 body{
-  font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   line-height:1.6;
-  background:linear-gradient(180deg, var(--bg) 0%, #0f1020 100%);
+  background: linear-gradient(180deg, var(--bg) 0%, rgba(0,0,0,0.04) 100%);
   color:var(--fg);
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
@@ -39,6 +54,9 @@ a{color:var(--fg);text-decoration:none}
 .menu a{opacity:.9}
 .theme-toggle{background:transparent;border:1px solid var(--border);color:var(--fg);padding:.5rem .7rem;border-radius:.8rem;cursor:pointer}
 
+/* small-screen menu open state */
+.menu.open{display:flex;flex-direction:column;background:transparent;padding:.5rem;border-radius:.5rem}
+
 /* Hero */
 .hero{padding:56px 0 32px;border-bottom:1px solid var(--border)}
 .hero-inner{display:grid;grid-template-columns:1.25fr .9fr; gap:2.5rem; align-items:center}
@@ -59,7 +77,7 @@ a{color:var(--fg);text-decoration:none}
   border-radius:1rem; 
   border:1px solid var(--border); 
   cursor:pointer; 
-  transition:.2s all ease;
+  transition:.18s transform ease, .18s box-shadow ease;
 }
 .btn:hover{transform:translateY(-2px)}
 .btn.primary{
@@ -72,7 +90,7 @@ a{color:var(--fg);text-decoration:none}
   color: var(--fg);
 }
 .btn.ghost:hover{
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.03);
 }
 
 /* Sections */
@@ -89,7 +107,7 @@ a{color:var(--fg);text-decoration:none}
   border-radius:18px; overflow:hidden; box-shadow:var(--shadow);
   display:flex; flex-direction:column;
 }
-.card-cover{display:block; overflow:hidden}
+.card-cover{display:block; overflow:hidden; border:0; padding:0}
 .card-cover img{width:100%; aspect-ratio: 16/10; object-fit:cover; transition: transform .35s ease}
 .card:hover .card-cover img{transform:scale(1.03)}
 .card-body{padding:14px 14px 16px}
@@ -110,19 +128,26 @@ input, textarea{
   background:var(--bg-soft); color:var(--fg); border:1px solid var(--border);
   border-radius:12px; padding:.8rem 1rem; outline-color:var(--brand-2);
 }
-input:focus, textarea:focus{box-shadow:0 0 0 3px rgba(14,165,233,.25)}
+input:focus, textarea:focus{box-shadow:0 0 0 3px rgba(14,165,233,.12)}
 
 /* Footer */
 .site-footer{border-top:1px solid var(--border); padding:20px 0; color:var(--muted)}
 .footer-inner{display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap}
 .socials{display:flex; gap:.9rem}
 
-/* Modals */
+/* Modals: style for native dialog and fallback (dialog[open]) */
 .modal{
   border:none; border-radius:18px; padding:0; max-width:min(96vw, 1100px); background:var(--bg);
   box-shadow: var(--shadow); color:var(--fg); overflow-y:auto; max-height:90vh;
 }
+/* ensure backdrop for native dialog */
 dialog::backdrop{background:rgba(0,0,0,.6)}
+
+/* Fallback if <dialog> isn't fully supported and we use [open] attr */
+dialog[open] {
+  /* browsers usually handle this - but ensure it's positioned */
+  display: block;
+}
 
 /* Responsywność */
 @media (max-width: 960px){
@@ -134,6 +159,7 @@ dialog::backdrop{background:rgba(0,0,0,.6)}
   .grid{grid-template-columns:1fr}
   .menu{display:none}
   .nav-toggle{display:inline-flex; background:transparent; border:1px solid var(--border); color:var(--fg); padding:.5rem .7rem; border-radius:.8rem; cursor:pointer}
+  .menu.open{display:flex}
 }
 
 
