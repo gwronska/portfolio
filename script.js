@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Theme toggle
   const themeBtn = document.getElementById('theme-toggle');
+  const htmlEl = document.documentElement;
 
   function updateButton() {
-    if (document.body.classList.contains('dark')) {
+    if (htmlEl.classList.contains('dark')) {
       themeBtn.textContent = '🌞 Light mode';
     } else {
       themeBtn.textContent = '🌙 Dark mode';
@@ -11,11 +12,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   themeBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
+    htmlEl.classList.toggle('dark');
     updateButton();
   });
 
-  updateButton(); // ustawienie przycisku przy załadowaniu
+  updateButton();
+
+  // Menu toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const menu = document.getElementById('menu');
+  navToggle.addEventListener('click', () => {
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true' || false;
+    navToggle.setAttribute('aria-expanded', !expanded);
+    menu.style.display = expanded ? 'none' : 'flex';
+  });
 
   // Modale
   const modalLinks = document.querySelectorAll('.card .btn.primary');
@@ -44,14 +54,13 @@ document.addEventListener('DOMContentLoaded', () => {
         dialog.close();
       }
     });
-  });
 
-  // Close button w modalu
-  document.querySelectorAll('.modal .close-btn').forEach(btn => {
-    btn.addEventListener('click', e => {
-      const dialog = btn.closest('dialog');
-      if (dialog) dialog.close();
-    });
+    // Close button w modalu
+    const closeBtn = dialog.querySelector('.btn.ghost');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => dialog.close());
+    }
   });
 });
+
 
