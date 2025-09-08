@@ -1,207 +1,220 @@
-<!doctype html>
-<html lang="pl">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gabriela — Portfolio</title>
-  <!-- Blokada indeksowania -->
-  <meta name="robots" content="noindex, nofollow">
-  <!-- Open Graph (opcjonalnie) -->
-  <meta property="og:title" content="Portfolio — Gabriela">
-  <meta property="og:description" content="Moje projekty UX/UI i front‑end.">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/project-1.svg">
-  <link rel="icon" href="assets/favicon.ico" sizes="any">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gabriela Portfolio</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <a class="skip-link" href="#main">Pomiń do treści</a>
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Header -->
   <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#"><span class="dot"></span>Gabriela</a>
-      <nav class="nav" aria-label="Główne">
-        <button class="nav-toggle" aria-expanded="false" aria-controls="menu">Menu</button>
+    <div class="header-inner container">
+      <div class="brand">
+        Gabriela <span class="dot"></span>
+      </div>
+      <nav>
+        <button class="nav-toggle" aria-expanded="false">Menu</button>
         <ul id="menu" class="menu">
-          <li><a href="#projects">Projekty</a></li>
-          <li><a href="#about">O mnie</a></li>
-          <li><a href="#contact">Kontakt</a></li>
-          <li><button id="theme-toggle" class="theme-toggle" aria-label="Przełącz motyw">🌓</button></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+      <button id="theme-toggle" class="theme-toggle">Toggle Theme</button>
     </div>
   </header>
 
-  <main id="main">
-    <section class="hero">
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <h1>Projektuję i buduję <span class="accent">intuicyjne</span> produkty</h1>
-          <p>Jestem <strong>Gabriela</strong> — projektantka UX/UI z doświadczeniem we wdrożeniach front‑end.
-          Aktualizuję swoje portfolio — poniżej kilka wybranych realizacji. Chętnie opowiem więcej podczas rozmowy.</p>
-          <div class="cta-row">
-            <a class="btn primary" href="#projects">Zobacz projekty</a>
-            <a class="btn ghost" href="#contact">Skontaktuj się</a>
+  <!-- Hero Section -->
+  <section class="hero container" id="main">
+    <div class="hero-inner">
+      <div>
+        <h1>Gabriela – UX/UI Designer</h1>
+        <p>
+          I specialize in creating intuitive, accessible, and visually engaging interfaces for web and mobile applications. My work bridges design and front-end implementation.
+        </p>
+      </div>
+      <div>
+        <!-- Placeholder for hero image -->
+        <img src="assets/hero-placeholder.png" alt="Gabriela portfolio hero">
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="section" id="about">
+    <div class="container about-inner">
+      <h2>About Me</h2>
+      <p>
+        I focus on designing user-centric solutions with attention to accessibility, usability, and aesthetic coherence. My process involves research, wireframing, prototyping, and iterative design based on feedback.
+      </p>
+      <ul class="bullets">
+        <li><span>•</span> UX/UI Design</li>
+        <li><span>•</span> Accessibility (WCAG)</li>
+        <li><span>•</span> Prototyping & Wireframing</li>
+        <li><span>•</span> Front-End Implementation</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Work Section -->
+  <section class="section" id="work">
+    <div class="container">
+      <div class="section-head">
+        <h2>Projects</h2>
+      </div>
+      <div class="grid">
+        <!-- YOPE -->
+        <div class="card">
+          <a href="#" data-modal="yope-modal" class="card-cover">
+            <img src="assets/yope-placeholder.png" alt="YOPE Website Redesign">
+          </a>
+          <div class="card-body">
+            <h3>YOPE Website Redesign</h3>
+            <p>Redesigning the Polish natural cosmetics website for accessibility and simplicity.</p>
           </div>
         </div>
-        <div class="hero-media">
-          <img src="assets/avatar.svg" alt="Zdjęcie lub avatar Gabrieli" loading="eager" width="400" height="400">
-        </div>
-      </div>
-    </section>
 
-    <section id="projects" class="section projects">
-      <div class="container">
-        <div class="section-head">
-          <h2>Wybrane projekty</h2>
-          <p class="muted">Sekcja łatwa do edycji — dodajemy nowe kafelki z Twoimi PNG.</p>
+        <!-- GlossoVR -->
+        <div class="card">
+          <a href="#" data-modal="glossovr-modal" class="card-cover">
+            <img src="assets/glossovr-placeholder.png" alt="GlossoVR Project">
+          </a>
+          <div class="card-body">
+            <h3>GlossoVR</h3>
+            <p>Immersive VR platform for language learning, focusing on intuitive user experience.</p>
+          </div>
         </div>
-        <div class="grid">
-          <!-- PROJEKT 1 -->
-          <article class="card">
-            <a class="card-cover" href="#" data-modal="project1">
-              <img src="assets/project-1.svg" alt="Miniatura: Projekt 1">
-            </a>
-            <div class="card-body">
-              <h3>Projekt 1: Aplikacja mobilna</h3>
-              <p class="muted">UX research → prototyp → testy → handoff</p>
-              <div class="tags">
-                <span>UX</span><span>UI</span><span>Prototyp</span>
-              </div>
-              <div class="card-links">
-                <a href="#" aria-disabled="true">Case study (wkrótce)</a>
-                <a href="#" aria-disabled="true">Live demo</a>
-              </div>
-            </div>
-          </article>
-          <!-- PROJEKT 2 -->
-          <article class="card">
-            <a class="card-cover" href="#" data-modal="project2">
-              <img src="assets/project-2.svg" alt="Miniatura: Projekt 2">
-            </a>
-            <div class="card-body">
-              <h3>Projekt 2: Dashboard webowy</h3>
-              <p class="muted">Design system, komponenty i interakcje</p>
-              <div class="tags">
-                <span>Design System</span><span>Front‑end</span>
-              </div>
-              <div class="card-links">
-                <a href="#" aria-disabled="true">Repozytorium</a>
-                <a href="#" aria-disabled="true">Live demo</a>
-              </div>
-            </div>
-          </article>
-          <!-- PROJEKT 3 -->
-          <article class="card">
-            <a class="card-cover" href="#" data-modal="project3">
-              <img src="assets/project-3.svg" alt="Miniatura: Projekt 3">
-            </a>
-            <div class="card-body">
-              <h3>Projekt 3: Strona marketingowa</h3>
-              <p class="muted">Animacje mikrointerakcji i A/B testy</p>
-              <div class="tags">
-                <span>UI</span><span>Animacje</span>
-              </div>
-              <div class="card-links">
-                <a href="#" aria-disabled="true">Case study</a>
-                <a href="#" aria-disabled="true">Live demo</a>
-              </div>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
 
-    <section id="about" class="section about">
-      <div class="container about-inner">
-        <div>
-          <h2>O mnie</h2>
-          <p>
-            Łączę <strong>research</strong>, projektowanie interfejsu i dbałość o szczegóły w kodzie. 
-            Lubię współpracę z zespołami produktowymi, iteracje i testy z użytkownikami. 
-            Po godzinach rozwijam biblioteki komponentów i uczę się motion designu.
-          </p>
-          <ul class="bullets">
-            <li><span>✓</span> Projektowanie end‑to‑end: discovery → delivery</li>
-            <li><span>✓</span> Narzędzia: Figma, Webflow, GitHub</li>
-            <li><span>✓</span> Front‑end: HTML, CSS, JS</li>
-          </ul>
-          <div class="btn-row">
-            <a class="btn primary" href="#contact">Dostępność projekcyjna</a>
-            <a class="btn ghost" href="Gabriela-CV.pdf" aria-disabled="true">Pobierz CV (PDF)</a>
+        <!-- WebPOS -->
+        <div class="card">
+          <a href="#" data-modal="webpos-modal" class="card-cover">
+            <img src="assets/webpos-placeholder.png" alt="WebPOS Application">
+          </a>
+          <div class="card-body">
+            <h3>WebPOS Web Application</h3>
+            <p>Web application for retail sales processes, enabling efficient POS workflows.</p>
+          </div>
+        </div>
+
+        <!-- Comarch IoT MES -->
+        <div class="card">
+          <a href="#" data-modal="comarch-mes-modal" class="card-cover">
+            <img src="assets/comarch-mes-placeholder.png" alt="Comarch IoT MES Panel Operator">
+          </a>
+          <div class="card-body">
+            <h3>Comarch IoT MES – Operator Panel</h3>
+            <p>Lead designer for production floor application, improving workflows and visibility.</p>
+          </div>
+        </div>
+
+        <!-- Comarch Mobile -->
+        <div class="card">
+          <a href="#" data-modal="comarch-mobile-modal" class="card-cover">
+            <img src="assets/comarch-mobile-placeholder.png" alt="Comarch Mobile Sales App">
+          </a>
+          <div class="card-body">
+            <h3>Comarch Mobile – Sales App Redesign</h3>
+            <p>Redesign of mobile interface for field sales representatives to optimize workflow.</p>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="contact" class="section contact">
-      <div class="container">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-          <p class="muted">Najlepiej e‑mail lub LinkedIn. Formularz używa usługi zewnętrznej (np. Formspree).</p>
+  <!-- Project Modals -->
+  <!-- YOPE Modal -->
+  <dialog id="yope-modal" class="modal">
+    <h2>YOPE Website Redesign</h2>
+    <p><strong>Project Overview:</strong> YOPE is a Polish natural cosmetics brand... (full text here)</p>
+    <p><strong>My Contributions:</strong> Analyzed website, applied WCAG guidelines, created simple UI...</p>
+    <p><strong>Process:</strong> Heuristic analysis, define, ideate, accessibility analysis, design.</p>
+    <!-- Placeholder for screens -->
+    <img src="assets/yope-screenshot1.png" alt="YOPE Screen 1">
+    <img src="assets/yope-screenshot2.png" alt="YOPE Screen 2">
+    <button onclick="this.closest('dialog').close()">Close</button>
+  </dialog>
+
+  <!-- GlossoVR Modal -->
+  <dialog id="glossovr-modal" class="modal">
+    <h2>GlossoVR</h2>
+    <p><strong>Project Overview:</strong> GlossoVR is a virtual reality platform for immersive language learning...</p>
+    <p><strong>My Role:</strong> Lead UX/UI designer collaborating with developers...</p>
+    <p><strong>Process:</strong> Research, personas, wireframes, prototyping, testing, visual style.</p>
+    <!-- Placeholder for screens -->
+    <img src="assets/glossovr-screenshot1.png" alt="GlossoVR Screen 1">
+    <img src="assets/glossovr-screenshot2.png" alt="GlossoVR Screen 2">
+    <button onclick="this.closest('dialog').close()">Close</button>
+  </dialog>
+
+  <!-- WebPOS Modal -->
+  <dialog id="webpos-modal" class="modal">
+    <h2>WebPOS Web Application</h2>
+    <p><strong>Project Overview:</strong> WebPOS is a web application for retail sales processes...</p>
+    <p><strong>My Role:</strong> UX/UI designer responsible for interfaces and workflows...</p>
+    <p><strong>Process:</strong> Requirements analysis, wireframes, prototypes, testing, optimization.</p>
+    <img src="assets/webpos-screenshot1.png" alt="WebPOS Screen 1">
+    <img src="assets/webpos-screenshot2.png" alt="WebPOS Screen 2">
+    <button onclick="this.closest('dialog').close()">Close</button>
+  </dialog>
+
+  <!-- Comarch IoT MES Modal -->
+  <dialog id="comarch-mes-modal" class="modal">
+    <h2>Comarch IoT MES – Operator Panel</h2>
+    <p><strong>Project Overview:</strong> Comarch IoT MES is an industrial solution with Operator Panel and Supervisor...</p>
+    <p><strong>My Role:</strong> Lead designer overseeing Operator Panel project...</p>
+    <p><strong>Process:</strong> Research, personas, IA, wireframes, prototypes, collaboration.</p>
+    <img src="assets/comarch-mes-screenshot1.png" alt="Comarch MES Screen 1">
+    <img src="assets/comarch-mes-screenshot2.png" alt="Comarch MES Screen 2">
+    <button onclick="this.closest('dialog').close()">Close</button>
+  </dialog>
+
+  <!-- Comarch Mobile Modal -->
+  <dialog id="comarch-mobile-modal" class="modal">
+    <h2>Comarch Mobile – Sales App Redesign</h2>
+    <p><strong>Project Overview:</strong> Comarch Mobile Sales is an app for field sales representatives...</p>
+    <p><strong>My Role:</strong> Lead UX/UI designer managing redesign project...</p>
+    <p><strong>Process:</strong> Research, personas, wireframes, prototypes, iteration, mobile usability.</p>
+    <img src="assets/comarch-mobile-screenshot1.png" alt="Comarch Mobile Screen 1">
+    <img src="assets/comarch-mobile-screenshot2.png" alt="Comarch Mobile Screen 2">
+    <button onclick="this.closest('dialog').close()">Close</button>
+  </dialog>
+
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <form class="contact-form">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name">
         </div>
-        <form class="contact-form" action="https://formspree.io/f/your-id" method="POST">
-          <div class="field">
-            <label for="name">Imię</label>
-            <input id="name" name="name" type="text" required>
-          </div>
-          <div class="field">
-            <label for="email">E‑mail</label>
-            <input id="email" name="email" type="email" required>
-          </div>
-          <div class="field">
-            <label for="message">Wiadomość</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-          <button class="btn primary" type="submit">Wyślij</button>
-        </form>
-      </div>
-    </section>
-  </main>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email">
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message"></textarea>
+        </div>
+        <button type="submit" class="btn primary">Send</button>
+      </form>
+    </div>
+  </section>
 
+  <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-inner">
-      <small>© <span id="year"></span> Gabriela. Wszystkie prawa zastrzeżone.</small>
+      <span>&copy; <span id="year"></span> Gabriela</span>
       <div class="socials">
-        <a href="https://github.com/TwojLogin" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://www.linkedin.com/in/TwojProfil" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:twoj.email@example.com">E‑mail</a>
+        <!-- Add links/icons -->
       </div>
     </div>
   </footer>
 
-  <!-- Modale projektów (prosty lightbox) -->
-  <dialog id="project1" class="modal">
-    <figure>
-      <img src="assets/project-1.svg" alt="Projekt 1 — cały ekran">
-      <figcaption>Opis projektu 1 — wstaw własny tekst i PNG.</figcaption>
-    </figure>
-    <form method="dialog">
-      <button class="btn ghost">Zamknij</button>
-    </form>
-  </dialog>
-  <dialog id="project2" class="modal">
-    <figure>
-      <img src="assets/project-2.svg" alt="Projekt 2 — cały ekran">
-      <figcaption>Opis projektu 2 — wstaw własny tekst i PNG.</figcaption>
-    </figure>
-    <form method="dialog">
-      <button class="btn ghost">Zamknij</button>
-    </form>
-  </dialog>
-  <dialog id="project3" class="modal">
-    <figure>
-      <img src="assets/project-3.svg" alt="Projekt 3 — cały ekran">
-      <figcaption>Opis projektu 3 — wstaw własny tekst i PNG.</figcaption>
-    </figure>
-    <form method="dialog">
-      <button class="btn ghost">Zamknij</button>
-    </form>
-  </dialog>
-
   <script src="script.js"></script>
 </body>
 </html>
+
