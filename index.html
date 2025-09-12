@@ -504,58 +504,71 @@
     }
 
     // Modal logic with fallbacks for browsers without showModal
-    const modalButtons = document.querySelectorAll('[data-modal]');
-    modalButtons.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const id = btn.dataset.modal;
-        const modal = document.getElementById(id);
-        if (!modal) return;
-        if (typeof modal.showModal === 'function'){
-          try { modal.showModal(); } catch (err) { modal.setAttribute('open',''); }
-        } else {
-          // fallback: add open attribute and add backdrop
-          modal.setAttribute('open','');
-          // add simple backdrop style
-          if (!document.querySelector('.polybackdrop')){
-            const bb = document.createElement('div');
-            bb.className = 'polybackdrop';
-            bb.style.position = 'fixed';
-            bb.style.inset = '0';
-            bb.style.background = 'rgba(0,0,0,0.55)';
-            bb.style.zIndex = '48';
-            document.body.appendChild(bb);
-            bb.addEventListener('click', () => {
-              // close all dialogs
-              document.querySelectorAll('dialog[open]').forEach(d => d.removeAttribute('open'));
-              bb.remove();
-            });
-          }
-        }
-      });
-    });
+const modalButtons = document.querySelectorAll('[data-modal]');
+modalButtons.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    const id = btn.dataset.modal;
+    const modal = document.getElementById(id);
+    if (!modal) return;
 
-    // Close buttons + click outside + ESC
-    document.querySelectorAll('dialog.modal').forEach(dialog => {
-      // close btn
-      const closeBtn = dialog.querySelector('.modal-close-btn');
-      if (closeBtn){
-        closeBtn.addEventListener('click', () => {
-          if (typeof dialog.close === 'function') dialog.close(); else dialog.removeAttribute('open');
-          // remove polybackdrop if present
-          const pb = document.querySelector('.polybackdrop');
-          if (pb) pb.remove();
+    // Add this line
+    document.body.classList.add('modal-open');
+
+    if (typeof modal.showModal === 'function'){
+      try { modal.showModal(); } catch (err) { modal.setAttribute('open',''); }
+    } else {
+      // fallback: add open attribute and add backdrop
+      modal.setAttribute('open','');
+      // add simple backdrop style
+      if (!document.querySelector('.polybackdrop')){
+        const bb = document.createElement('div');
+        bb.className = 'polybackdrop';
+        bb.style.position = 'fixed';
+        bb.style.inset = '0';
+        bb.style.background = 'rgba(0,0,0,0.55)';
+        bb.style.zIndex = '48';
+        document.body.appendChild(bb);
+        bb.addEventListener('click', () => {
+          // close all dialogs
+          document.querySelectorAll('dialog[open]').forEach(d => d.removeAttribute('open'));
+          bb.remove();
+          
+          // Add this line
+          document.body.classList.remove('modal-open');
         });
       }
+    }
+  });
+});
 
-      // click on backdrop (native) -> close
-      dialog.addEventListener('click', (e) => {
-        if (e.target === dialog){
-          if (typeof dialog.close === 'function') dialog.close(); else dialog.removeAttribute('open');
-          const pb = document.querySelector('.polybackdrop'); if (pb) pb.remove();
-        }
-      });
+// Close buttons + click outside + ESC
+document.querySelectorAll('dialog.modal').forEach(dialog => {
+  // close btn
+  const closeBtn = dialog.querySelector('.modal-close-btn');
+  if (closeBtn){
+    closeBtn.addEventListener('click', () => {
+      if (typeof dialog.close === 'function') dialog.close(); else dialog.removeAttribute('open');
+      // remove polybackdrop if present
+      const pb = document.querySelector('.polybackdrop');
+      if (pb) pb.remove();
+      
+      // Add this line
+      document.body.classList.remove('modal-open');
     });
+  }
+
+  // click on backdrop (native) -> close
+  dialog.addEventListener('click', (e) => {
+    if (e.target === dialog){
+      if (typeof dialog.close === 'function') dialog.close(); else dialog.removeAttribute('open');
+      const pb = document.querySelector('.polybackdrop'); if (pb) pb.remove();
+      
+      // Add this line
+      document.body.classList.remove('modal-open');
+    }
+  });
+});
 
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape'){
