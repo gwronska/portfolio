@@ -28,6 +28,11 @@
       --card:#ffffff;
       --border: rgba(2,6,23,0.06);
       --shadow: 0 8px 24px rgba(2,6,23,0.06);
+      /* Kolory dla jasnego trybu */
+  --keep-in-mind-bg: #f5f5f5;
+  --keep-in-mind-border: #e0e0e0;
+  --keep-in-mind-color: #666;
+
     }
     html.dark{
       --bg:#0b0c10;
@@ -40,6 +45,16 @@
       --border:#242638;
       --shadow: 0 12px 36px rgba(0,0,0,0.35);
     }
+
+    @media (prefers-color-scheme: dark) {
+  :root {
+    /* Nadpisanie kolorów dla trybu ciemnego */
+    --keep-in-mind-bg: #333; /* Ciemny, subtelny kolor tła */
+    --keep-in-mind-border: #444; /* Ciemniejsza ramka */
+    --keep-in-mind-color: #ccc; /* Jasny tekst dla dobrego kontrastu */
+  }
+}
+
 
     body{
       background: var(--bg);
@@ -176,14 +191,14 @@
         stroke: var(--muted);
     }
 
-    .keep-in-mind {
-  background-color: #f5f5f5; /* Bardzo jasny, szarawy kolor tła */
-  border: 1px solid #e0e0e0; /* Delikatna, szara ramka */
-  border-radius: 8px; /* Zaokrąglone rogi */
-  padding: 1rem; /* Wewnętrzny odstęp od tekstu */
-  font-size: 0.9rem; /* Trochę mniejsza czcionka, żeby wyglądało dyskretnie */
-  color: #666; /* Ciemnoszary kolor tekstu */
-  margin-top: 1.5rem; /* Odstęp od poprzedniego elementu */
+  .keep-in-mind {
+  background-color: var(--keep-in-mind-bg);
+  border: 1px solid var(--keep-in-mind-border);
+  border-radius: 8px;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: var(--keep-in-mind-color);
+  margin-top: 1.5rem;
 }
 
     /* Responsive */
