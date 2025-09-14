@@ -154,9 +154,10 @@
 }
 
 .contact .section-head {
-  display: flex; 
-  align-items: flex-end; 
-  justify-content: space-between; 
+  display: flex; /* Zmieniamy na flexbox, aby móc kontrolować kierunek */
+  flex-direction: column; /* Ustawiamy układ w kolumnach */
+  align-items: flex-start; /* Nagłówki wyrównane do lewej */
+  justify-content: space-between;
   gap: 1rem; 
   margin-bottom: 3rem;
 }
@@ -231,7 +232,11 @@
 
 /* Dark Mode Adjustments */
 html.dark .contact {
-  background: linear-gradient(135deg, rgba(17, 18, 24, 0.5) 0%, rgba(10, 11, 16, 0.5) 100%);
+  background: linear-gradient(135deg, rgba(25, 26, 30, 0.5) 0%, rgba(18, 19, 25, 0.5) 100%);
+}
+html.dark .contact::before {
+  /* Adjust the radial gradient to be more visible */
+  background: radial-gradient(circle, rgba(100, 100, 150, 0.1) 0%, rgba(10, 11, 16, 0) 70%);
 }
 
 html.dark .contact-card {
