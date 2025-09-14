@@ -128,6 +128,115 @@
         font-size: 1.5rem;
     }
 
+    /* New Contact Section */
+.contact {
+  background: linear-gradient(135deg, rgba(240, 240, 255, 0.5) 0%, rgba(250, 245, 255, 0.5) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(200, 200, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%);
+  z-index: 1;
+}
+
+.contact .container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact .section-head {
+  text-align: center;
+  max-width: 600px;
+  margin-bottom: 3rem;
+}
+
+.contact-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 900px;
+}
+
+@media (min-width: 768px) {
+  .contact-cards {
+    flex-direction: row;
+  }
+}
+
+/* Individual Card Styling */
+.contact-card {
+  background: var(--card);
+  border-radius: 1.5rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.08);
+  border: 1px solid var(--border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1;
+}
+
+.contact-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(2, 6, 23, 0.12);
+}
+
+.contact-card .icon {
+  width: 4rem;
+  height: 4rem;
+  background: var(--brand-2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.contact-card .icon svg {
+  width: 2rem;
+  height: 2rem;
+  stroke-width: 2.5;
+  color: #fff;
+}
+
+.contact-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.contact-card p {
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.contact-card .btn {
+  width: 100%;
+}
+
+/* Dark Mode Adjustments */
+html.dark .contact {
+  background: linear-gradient(135deg, rgba(17, 18, 24, 0.5) 0%, rgba(10, 11, 16, 0.5) 100%);
+}
+
+html.dark .contact-card {
+  background: var(--bg-soft);
+  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.2);
+}
+
     /* Footer */
     .site-footer{ border-top:1px solid var(--border); padding:20px 0; color:var(--muted); }
     .footer-inner{ display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
@@ -354,23 +463,34 @@ html.dark {
       </div>
     </section>
 
-    <section id="contact" class="section contact">
-      <div class="container">
-        <div class="section-head">
-          <h2>Contact Me</h2>
-          <p class="muted">Let's connect!</p>
-        </div>
+<section id="contact" class="section contact">
+  <div class="container">
+    <div class="section-head">
+      <h2 style="color: var(--text);">Let's Connect</h2>
+      <p style="color: var(--muted); max-width: 500px; margin: 0 auto;">Do you have a question or want to collaborate? Feel free to reach out. I'll get back to you as soon as possible.</p>
+    </div>
 
-        <div class="contact-icons">
-          <a href="mailto:gabriela.m.wronska@gmail.com" target="_blank" rel="noopener" aria-label="Email me">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/gabriela-wronska/" target="_blank" rel="noopener" aria-label="Visit my LinkedIn profile">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
+    <div class="contact-cards">
+      <div class="contact-card">
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
         </div>
+        <h3>Email</h3>
+        <p>Send me a direct message.</p>
+        <a href="mailto:gabriela.m.wronska@gmail.com" target="_blank" rel="noopener" aria-label="Email me" class="btn primary">Send an email</a>
       </div>
-    </section>
+
+      <div class="contact-card">
+        <div class="icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+        </div>
+        <h3>LinkedIn</h3>
+        <p>Let's connect professionally.</p>
+        <a href="https://www.linkedin.com/in/gabriela-wronska/" target="_blank" rel="noopener" aria-label="Visit my LinkedIn profile" class="btn ghost">Visit profile</a>
+      </div>
+    </div>
+  </div>
+</section>
   </main>
 
   <footer class="site-footer">
